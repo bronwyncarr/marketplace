@@ -7,6 +7,7 @@
   <div class="form-inputs">
     <%= f.input :title %>
     <%= f.association :charity %>
+    <%# <%= f.association :charity, label_method: :name, value_method: :id %> %>
     <%= f.input :description, as: :text %>
     <%= f.input :hours %>
     <%= f.input :date %>

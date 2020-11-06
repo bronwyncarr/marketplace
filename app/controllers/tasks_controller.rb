@@ -69,7 +69,7 @@ class TasksController < ApplicationController
     end
 
     def set_charity
-      @charity = Charity.find(params[:id])
+      @charity = Charity.find_by(id: @task.charity_id)
     end
 
     # Only allow a list of trusted parameters through.
