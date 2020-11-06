@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_06_031614) do
+ActiveRecord::Schema.define(version: 2020_11_06_043651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 2020_11_06_031614) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "category"
+  end
+
+  create_table "eois", force: :cascade do |t|
+    t.bigint "task_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["task_id"], name: "index_eois_on_task_id"
+    t.index ["user_id"], name: "index_eois_on_user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -46,5 +55,7 @@ ActiveRecord::Schema.define(version: 2020_11_06_031614) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "eois", "tasks"
+  add_foreign_key "eois", "users"
   add_foreign_key "tasks", "charities"
 end
