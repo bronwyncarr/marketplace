@@ -1,25 +1,31 @@
-<p id="notice"><%= notice %></p>
-
-<div class="container">
-  <h1>Tasks</h1>
-  <% @tasks.each do |task| %>
-    <div class="card mb-3" style="max-width: 900px;">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-          <img src="..." class="card-img" alt="...">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title"><%= task.title %></h5>
-            <h5 class="card-title"><%= task.description %></h5>
-            <div class="date-time-containter">
-              <p class="card-text text-muted"><%= task.date %></p>
-              <p class="card-text text-muted"><%= task.hours %> hours</p>
+<div class="row">
+  <aside class="col-lg-3">
+    <%= render partial: 'shared/nav' %>
+  </aside>
+  <div class="col-lg-9">
+    <div class="container">
+    <p id="notice"><%= notice %></p>
+      <h1>Tasks</h1>
+      <% @tasks.each do |task| %>
+        <div class="card mb-3" style="max-width: 900px;">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img src="..." class="card-img" alt="...">
             </div>
-            <%= link_to 'Show', task %>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title"><%= task.title %></h5>
+                <h5 class="card-title"><%= task.description %></h5>
+                <div class="date-time-containter">
+                  <p class="card-text text-muted"><%= task.date %></p>
+                  <p class="card-text text-muted"><%= task.hours %> hours</p>
+                </div>
+                <%= link_to 'Show', task %>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
