@@ -22,3 +22,9 @@ end
   description = Faker::Lorem.sentence(word_count: 200)
   Charity.create name: name, category: category, description: description
 end
+
+5.times do
+  user_id = 1
+  task_id = rand(1..5)
+  UserTask.create user_id: user_id, task_id: task_id
+end

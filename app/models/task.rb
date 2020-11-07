@@ -6,6 +6,6 @@ class Task < ApplicationRecord
   validates_date :date, on_or_after: lambda { Date.current }
   belongs_to :charity
   accepts_nested_attributes_for :charity
-  has_many :users, through: :user_taks
+  has_many :users, through: :user_tasks
   has_one_attached :image
 end
