@@ -1,14 +1,12 @@
-<ul class="nav flex-column">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Longer nav link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
-  </li>
-</ul>
+<nav class="nav flex-column">
+  <% if user_signed_in? %>
+      <h4>Welcome back, <%= current_user.username %></h4>
+      <%= link_to "My Profile", tasks_path, class: "nav-item nav-link" %>
+      <%= link_to "Info", tasks_path, class: "nav-item nav-link" %>
+      <%= link_to "Details", tasks_path, class: "nav-item nav-link" %>
+      <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+  <% else %>
+      <%= link_to "Sign In", new_user_session_path, class: "nav-item nav-link" %>
+      <%= link_to "Sign Up", new_user_registration_path, class: "nav-item nav-link" %>      
+  <% end %>
+</nav>

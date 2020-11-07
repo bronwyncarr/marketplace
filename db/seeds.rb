@@ -8,15 +8,17 @@
 
 10.times do
   title = Faker::Job.title
-  description = Faker::Lorem.sentence(word_count: 20)
+  summary = Faker::Lorem.sentence(word_count: 20)
+  description = Faker::Lorem.sentence(word_count: 200)
   hours = Faker::Number.between(from: 1, to: 10)
   date = Faker::Date.forward(days: 365)
   charity_id = rand(1..5)
-  Task.create title: title, description: description, hours: hours, date: date, charity_id: charity_id
+  Task.create title: title, summary: summary, description: description, hours: hours, date: date, charity_id: charity_id
 end
 
 5.times do
   name = Faker::Job.title
   category = Faker::Lorem.word
-  Charity.create name: name, category: category
+  description = Faker::Lorem.sentence(word_count: 200)
+  Charity.create name: name, category: category, description: description
 end
