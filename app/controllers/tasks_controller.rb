@@ -1,6 +1,5 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :set_charity, only: [:show]
 
   # GET /tasks
   # GET /tasks.json
@@ -68,12 +67,8 @@ class TasksController < ApplicationController
       @task = Task.find(params[:id])
     end
 
-    def set_charity
-      @charity = Charity.find_by(id: @task.charity_id)
-    end
-
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:title, :summary, :description, :hours, :date, :charity_id)
+      params.require(:task).permit(:title, :summary, :description, :hours, :date, :image, :charity_id)
     end
 end

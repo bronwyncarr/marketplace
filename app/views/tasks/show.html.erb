@@ -1,18 +1,20 @@
 
 <div class="row">
-  <aside class="col-lg-3">
-    <%= render partial: 'shared/nav' %>
+  <aside class="col-3">
+    <%= render partial: 'shared/aside' %>
   </aside>
-  <div class="col-lg-9">
+  <div class="col-9">
     <div class="card mb-3">
-      <img class="card-img-top" src="..." alt="Card image cap">
+      <% if @task.image.attached? == true %>
+        <%= image_tag @task.image, class:'card-img-top' %>
+      <% end %>
       <%= link_to 'Back', tasks_path %>
       <div class="card-body">
         <div class="title-container">
           <h5 class="card-title"><%= @task.title %></h5>
           <h5 class="card-title"><%= @task.date.to_formatted_s(:rfc822)  %></h5>
         </div>
-        <h5 class="card-title"><%= @charity.name %></h5>
+        <h5 class="card-title"><%= @task.charity.name %></h5>
         <h5 class="card-text"><%= @task.summary %></h5>
         <p class="card-text"><%= @task.description %></p>
         <p class="card-text">Approximate time commitment: <%= @task.hours %> hours</p>
@@ -22,7 +24,7 @@
     </div>
     <div class="card mb-3">
       <div class="card-body">
-        <h5 class="card-title">About <%= @charity.name %>:</h5>
+        <h5 class="card-title">About <%= @task.charity.name %>:</h5>
         <p class="card-text"><%= @task.description %></p>
         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
       </div>

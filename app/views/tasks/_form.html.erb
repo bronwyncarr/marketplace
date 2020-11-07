@@ -11,6 +11,7 @@
     <%= f.input :description, as: :text %>
     <%= f.input :hours %>
     <%= f.input :date, order: [:day, :month, :year] %>
+    <%= f.file_field :image, accept: "image/png, image/jpg, image/jpeg"%>
   </div>
 
   <div class="form-actions">
