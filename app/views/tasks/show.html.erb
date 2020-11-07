@@ -7,25 +7,26 @@
     <div class="card mb-3">
       <img class="card-img-top" src="..." alt="Card image cap">
       <div class="card-body">
-      <div class="title-container">
-        <h5 class="card-title"><%= @task.title %></h5>
-        <h5 class="card-title"><%= @task.date %></h5>
+        <div class="title-container">
+          <h5 class="card-title"><%= @task.title %></h5>
+          <h5 class="card-title"><%= @task.date %></h5>
+        </div>
+        <h5 class="card-title"><%= @charity.name %></h5>
+        <h5 class="card-text"><%= @task.summary %></h5>
+        <p class="card-text"><%= @task.description %></p>
+        <p class="card-text">Approximate time commitment: <%= @task.hours %> hours</p>
+        <br>
+        <button type="button" class="btn btn-secondary btn-lg">I'm Interested!</button>
       </div>
-      <h5 class="card-title"><%= @charity.name %></h5>
-      <p class="card-text"><%= @task.description %></p>
-      <p class="card-text"><%= @task.description %></p>
-      <p class="card-text">Approximate time commitment: <%= @task.hours %> hours</p>
-      <br>
-      <button type="button" class="btn btn-secondary btn-lg">I'm Interested!</button>
-      <br>
-      <br>
-      <h5 class="card-title">About the <%= @task.title %>:</h5>
-      <p class="card-text"><%= @task.description %></p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
-  </div>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">About the <%= @task.title %>:</h5>
+        <p class="card-text"><%= @task.description %></p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
       <%= link_to 'Edit', edit_task_path(@task) %> |
       <%= link_to 'Back', tasks_path %>
-    <div>
   </div>
 </div>
