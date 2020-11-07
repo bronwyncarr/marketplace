@@ -17,10 +17,10 @@
                 <h5 class="card-title"><%= task.title %></h5>
                 <h5 class="card-title"><%= task.summary %></h5>
                 <div class="date-time-containter">
-                  <p class="card-text text-muted"><%= task.date %></p>
+                  <p class="card-text text-muted"><%= task.date.to_formatted_s(:rfc822) %></p>
                   <p class="card-text text-muted"><%= task.hours %> hours</p>
                 </div>
-                <%= link_to 'Show', task %>
+                <%= link_to 'More details', task %>
               </div>
             </div>
           </div>
