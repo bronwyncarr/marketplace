@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_07_161947) do
+ActiveRecord::Schema.define(version: 2020_11_08_174520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,21 @@ ActiveRecord::Schema.define(version: 2020_11_07_161947) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "category"
     t.text "description"
+  end
+
+  create_table "required_skills", force: :cascade do |t|
+    t.bigint "task_id", null: false
+    t.bigint "skill_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["skill_id"], name: "index_required_skills_on_skill_id"
+    t.index ["task_id"], name: "index_required_skills_on_task_id"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -79,6 +94,8 @@ ActiveRecord::Schema.define(version: 2020_11_07_161947) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "required_skills", "skills"
+  add_foreign_key "required_skills", "tasks"
   add_foreign_key "tasks", "charities"
   add_foreign_key "user_tasks", "tasks"
   add_foreign_key "user_tasks", "users"
