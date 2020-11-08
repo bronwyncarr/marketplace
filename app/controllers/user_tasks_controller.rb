@@ -1,34 +1,76 @@
-# class UserTasksController < ApplicationController
-#   before_action :set_user_task, only: [:show, :edit, :update, :destroy] 
-#   before_action :authenticate_user! 
+class UserTasksController < ApplicationController
+  before_action :set_user_task, only: [:show, :update, :destroy]
+  before_action :user_tasks_by_user, only: [:index, :chart]
 
-#   # GET /user_user_tasks
-#   def index
-#     @user_tasks = Task.joins(user: current_user)
-#   end
-  
-#   def new 
-#     @tweet = Tweet.new
-#   end
+  # GET /user_tasks
+  # GET /user_tasks.json
+  def index
+    @user_tasks = UserTask.all.where(user_id: current_user[:id])
+  end
 
-#   def create 
-#     @tweet = current_user.tweets.new(tweet_params) 
-#     if @tweet.save
-#       redirect_to tweets_path
-#     else
-#       render :new
-#     end
-#   end
+  # GET /user_tasks/1
+  # GET /user_tasks/1.json
+  def show
+  end
 
-#   private
-#     # Use callbacks to share common setup or constraints between actions.
-#     def set_user_task
-#       @user_task = User_task.find(params[:id])
-#     end
+  # GET /user_tasks/new
+  def new
+    @user_task = UserTask.new
+  end
 
-#     # Only allow a list of trusted parameters through.
-#     def user_task_params
-#       params.require(:user_task).permit(:title, :summary, :description, :hours, :date, :image, :charity_id)
-#     end
+  # POST /user_tasks
+  # POST /user_tasks.json
+  def create
+    @user_task = UserTask.new(user_task_params)
+    @user_task.user_id = current_user.id
 
-# end
+    respond_to do |format|
+      if @user_task.save
+        format.html { redirect_to @user_task, notice: 'user_task was successfully created.' }
+        format.json { render :show, status: :created, location: @user_task }
+      else
+        format.html { render :new }
+        format.json { render json: @user_task.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /user_tasks/1
+  # PATCH/PUT /user_tasks/1.json
+  def update
+    respond_to do |format|
+      if @user_task.update(user_task_params)
+        format.html { redirect_to @user_task, notice: 'user_task was successfully updated.' }
+        format.json { render :show, status: :ok, location: @user_task }
+      else
+        format.html { render :edit }
+        format.json { render json: @user_task.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /user_tasks/1
+  # DELETE /user_tasks/1.json
+  def destroy
+    @user_task.destroy
+    respond_to do |format|
+      format.html { redirect_to user_tasks_url, notice: 'user_task was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def user_tasks_by_user
+      @user_tasks = UserTask.where(user: current_user[:id])
+    end
+
+    def set_user_task
+      @user_task = UserTask.find(params[:id])
+    end
+
+    # Only allow a list of trusted parameters through.
+    def user_task_params
+      params.require(:user_task).permit(:user_id, :task_id)
+    end
+end

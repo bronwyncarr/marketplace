@@ -1,1 +1,25 @@
-<%= @user_tasks %>
+<h2>My Expressions Of Interest</h2>
+
+<% @user_tasks.each do |user_task| %>
+  <div class="card mb-3" style="max-width: 900px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <% if user_task.task.image.attached? == true %>
+          <%= image_tag user_task.task.image, class:'card-img-top' %>
+        <% end %>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><%= user_task.task.title %></h5>
+          <h5 class="card-title"><%= user_task.task.summary %></h5>
+          <div class="date-time-containter">
+            <p class="card-text text-muted"><%= user_task.task.date.to_formatted_s(:rfc822) %></p>
+            <p class="card-text text-muted"><%= user_task.task.hours %> hours</p>
+          </div>
+          <%= link_to 'More details', user_task.task %>
+          <%= link_to 'Destroy', user_task, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
