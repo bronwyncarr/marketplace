@@ -19,6 +19,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
+    @skills = Skill.all.map { |i| i.name }
     @task = Task.new
   end
 
@@ -28,17 +29,12 @@ class TasksController < ApplicationController
 
   # POST /tasks
   # POST /tasks.json
-  def create
-    @task = Task.new(task_params)
-    respond_to do |format|
-      if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
-        format.json { render :show, status: :created, location: @task }
-      else
-        format.html { render :new }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
+  def create 
+    task = Task.create(task_params)
+    params[:task][:skills].each do |skill|
+      task.skills << Skill.find_by_name(skill)
     end
+    redirect_to tasks_path 
   end
 
   # PATCH/PUT /tasks/1
@@ -93,6 +89,6 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:title, :summary, :description, :hours, :date, :image, :charity_id)
+      params.require(:task).permit(:title, :summary, :description, :hours, :date, :image, :charity_id, skill_id: [])
     end
 end

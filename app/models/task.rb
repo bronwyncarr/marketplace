@@ -7,13 +7,14 @@ class Task < ApplicationRecord
   validates :hours, numericality: { only_integer: true, less_than: 24 }  
   validates_date :date, on_or_after: lambda { Date.current }
 
-  belongs_to :charity
-  accepts_nested_attributes_for :charity
   has_many :user_tasks
   has_many :users, through: :user_tasks
-  has_many :required_skill
-  has_many :skills, through: :required_skill
+  has_many :required_skills
+  has_many :skills, through: :required_skills
+  
   has_one_attached :image
+  belongs_to :charity
+  accepts_nested_attributes_for :charity
 
   scope :search_by_title, -> (title) { where('title ILIKE ?', "%#{title}%") } 
 
