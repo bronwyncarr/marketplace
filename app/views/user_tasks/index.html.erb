@@ -17,7 +17,7 @@
             <p class="card-text text-muted"><%= user_task.task.hours %> hours</p>
           </div>
           <%= link_to 'More details', user_task.task %>
-          <%= link_to 'Destroy', user_task, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Delete from my list', user_task, method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
       </div>
     </div>
