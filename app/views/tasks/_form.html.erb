@@ -12,8 +12,7 @@
     <%= f.input :hours %>
     <%= f.input :date, order: [:day, :month, :year] %>
     <%= f.file_field :image, accept: "image/png, image/jpg, image/jpeg"%>
-
-    <%= f.select :skills, options_for_select(@skills), {:include_blank => false, include_hidden: false}, {:multiple => true, class: "select"} %>
+    <%= f.collection_check_boxes :skill_ids, Skill.all, :id, :name %>
   </div>
 
   <div class="form-actions">

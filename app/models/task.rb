@@ -9,9 +9,17 @@ class Task < ApplicationRecord
 
   has_many :user_tasks
   has_many :users, through: :user_tasks
+
   has_many :required_skills
   has_many :skills, through: :required_skills
-  
+
+  def skills_attributes=(skill_attributes)
+    skill_attributes.values.each do |skill_attribute|
+      skill = Skill.find_or_create_by(skill_attribute)
+      self.skills << skill
+    end
+  end
+
   has_one_attached :image
   belongs_to :charity
   accepts_nested_attributes_for :charity

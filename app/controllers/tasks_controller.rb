@@ -19,7 +19,6 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
-    @skills = Skill.all.map { |i| i.name }
     @task = Task.new
   end
 
@@ -30,12 +29,21 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create 
-    task = Task.create(task_params)
-    params[:task][:skills].each do |skill|
-      task.skills << Skill.find_by_name(skill)
+    # task = Task.create(task_params)
+    # redirect_to task
+
+    @task = current_user.tasks.new(task_params)
+    respond_to do |format|
+      if @task.save!
+        format.html { redirect_to @task, notice: 'Spot was successfully created.' }
+        format.json { render :show, status: :created, location: @task }
+      else
+        format.html { render :new }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
     end
-    redirect_to tasks_path 
   end
+
 
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
@@ -82,6 +90,10 @@ class TasksController < ApplicationController
       @task = Task.find(params[:id])
     end
 
+    def set_skills
+      @requiredskills = RequiredSkill.find(params[:id])
+    end
+
     # Search parameters allowed through
     def search_params
       params.require(:search).permit(:title, charities: [], skills: [])
@@ -89,6 +101,6 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:title, :summary, :description, :hours, :date, :image, :charity_id, skill_id: [])
+      params.require(:task).permit(:title, :summary, :description, :hours, :date, :image, :charity_id, skill_ids: [])
     end
 end
