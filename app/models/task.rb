@@ -9,7 +9,10 @@ class Task < ApplicationRecord
 
   belongs_to :charity
   accepts_nested_attributes_for :charity
+  has_many :user_tasks
   has_many :users, through: :user_tasks
+  has_many :required_skill
+  has_many :skills, through: :required_skill
   has_one_attached :image
 
   scope :search_by_title, -> (title) { where('title ILIKE ?', "%#{title}%") } 
