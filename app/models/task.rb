@@ -25,7 +25,7 @@ class Task < ApplicationRecord
   accepts_nested_attributes_for :charity
 
   scope :search_by_title, -> (title) { where('title ILIKE ?', "%#{title}%") } 
+  scope :search_by_skills, -> (skill_ids) { joins(:skills).merge(Skill.where(id: skill_ids)) }
 
   # scope :search_by_author, -> (author) { joins(:authors).merge(Author.where('authors.name ILIKE ?', "%#{author}%")) }
-  # scope :search_by_categories, -> (category_ids) { joins(:categories).merge(Category.where(id: category_ids)) }
 end

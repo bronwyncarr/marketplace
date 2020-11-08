@@ -17,8 +17,8 @@
           <%# <%= f.label :author %>
           <%# <%= f.text_field :author %> %>
 
-          <%# <%= f.label :categories %> %>
-          <%# <%= f.collection_select :categories, Category.all, :id, :name, {}, { multiple: true } %> %> %>
+          <%= f.label :skills %>
+          <%= f.collection_select :skills, Skill.all, :id, :name, {}, { multiple: true } %>
 
           <%= f.submit 'Search' %>
         <% end %>
