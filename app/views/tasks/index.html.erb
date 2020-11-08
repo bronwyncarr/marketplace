@@ -14,15 +14,13 @@
           <%= f.label :title %>
           <%= f.text_field :title %>
 
-          <%# <%= f.label :author %>
-          <%# <%= f.text_field :author %> %>
-
           <%= f.label :skills %>
           <%= f.collection_select :skills, Skill.all, :id, :name, {}, { multiple: true } %>
 
           <%= f.submit 'Search' %>
         <% end %>
 
+        <%# Display each task in a horizontal card  %>
         <% @tasks.each do |task| %>
           <div class="card mb-3" style="max-width: 900px;">
             <div class="row no-gutters">

@@ -96,7 +96,7 @@ class TasksController < ApplicationController
 
     # Search parameters allowed through
     def search_params
-      params.require(:search).permit(:title, charities: [], skills: [])
+      params.require(:search).permit(:title, skills: [])
     end
 
     # Only allow a list of trusted parameters through.
