@@ -8,6 +8,21 @@
       <div class="container">
       <p id="notice"><%= notice %></p>
         <h1>Volunteer Opportunities</h1>
+
+        <%# Search Form %>
+        <%= form_with(scope: :search, url: tasks_path, method: 'get', local: true) do |f| %>
+          <%= f.label :title %>
+          <%= f.text_field :title %>
+
+          <%# <%= f.label :author %>
+          <%# <%= f.text_field :author %> %>
+
+          <%# <%= f.label :categories %> %>
+          <%# <%= f.collection_select :categories, Category.all, :id, :name, {}, { multiple: true } %> %> %>
+
+          <%= f.submit 'Search' %>
+        <% end %>
+
         <% @tasks.each do |task| %>
           <div class="card mb-3" style="max-width: 900px;">
             <div class="row no-gutters">

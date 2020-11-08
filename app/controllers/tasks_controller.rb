@@ -5,7 +5,11 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    if params[:search].present?
+      @tasks = Task.search_by(search_params)
+    else
+      @tasks = Task.all
+    end
   end
 
   # GET /tasks/1
@@ -80,6 +84,11 @@ class TasksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.find(params[:id])
+    end
+
+    # Search parameters allowed through
+    def search_params
+      params.require(:search).permit(:title, charities: [], skills: [])
     end
 
     # Only allow a list of trusted parameters through.
