@@ -19,7 +19,7 @@
         <p class="card-text"><%= @task.description %></p>
         <p class="card-text">Approximate time commitment: <%= @task.hours %> hours</p>
         <br>
-        <button type="button" class="btn btn-secondary btn-lg">I'm Interested!</button>
+        <%= link_to "I'm Interested", save_path, class: "btn btn-secondary btn-lg" %>
       </div>
     </div>
     <div class="card mb-3">
