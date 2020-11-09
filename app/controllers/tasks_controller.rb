@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy] 
-  # before_action :authenticate_user!, except: [:index]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :save] 
+  before_action :authenticate_user!, except: [:index]
 
   # GET /tasks
   # GET /tasks.json
@@ -26,7 +26,6 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
-
     respond_to do |format|
       if @task.save
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
@@ -59,6 +58,21 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def save
+    @user_task = UserTask.new
+    @user_task.task_id = params[:id]
+    @user_task.user_id = current_user.id
+    respond_to do |format|
+      if @user_task.save
+        format.html { redirect_to tasks_url, notice: 'Opportunityw as successfully added to your list' }
+        format.json { render :show, status: :created, location: @task }
+      else
+        format.html { render :new }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
     end
   end
 

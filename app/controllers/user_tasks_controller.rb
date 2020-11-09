@@ -13,42 +13,6 @@ class UserTasksController < ApplicationController
   def show
   end
 
-  # GET /user_tasks/new
-  def new
-    @user_task = UserTask.new
-  end
-
-  # POST /user_tasks
-  # POST /user_tasks.json
-  def create
-    @user_task = UserTask.new(user_task_params)
-    @user_task.user_id = current_user.id
-
-    respond_to do |format|
-      if @user_task.save
-        format.html { redirect_to @user_task, notice: 'user_task was successfully created.' }
-        format.json { render :show, status: :created, location: @user_task }
-      else
-        format.html { render :new }
-        format.json { render json: @user_task.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /user_tasks/1
-  # PATCH/PUT /user_tasks/1.json
-  def update
-    respond_to do |format|
-      if @user_task.update(user_task_params)
-        format.html { redirect_to @user_task, notice: 'user_task was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user_task }
-      else
-        format.html { render :edit }
-        format.json { render json: @user_task.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # DELETE /user_tasks/1
   # DELETE /user_tasks/1.json
   def destroy
