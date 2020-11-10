@@ -6,7 +6,20 @@ class ApplicationController < ActionController::Base
   #   redirect_to tasks_path
   # end
 
+  add_flash_types :error, :success
+  layout :layout_for_resource
+
   protected
+
+  def layout_for_resource
+    if devise_controller?
+      'devise'   
+    elsif 
+      'home'
+    else
+      'application'
+    end
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
