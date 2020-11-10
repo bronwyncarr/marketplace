@@ -24,9 +24,7 @@
           <div class="card mb-3" style="max-width: 900px;">
             <div class="row no-gutters">
               <div class="col-md-4">
-                <% if task.image.attached? == true %>
-                  <%= image_tag task.image, class:'card-img-top' %>
-                <% end %>
+                <%= image_tag image_for(task), class: 'card-img-top' %>
               </div>
               <div class="col-md-8">
                 <div class="card-body">

@@ -5,8 +5,6 @@ class TasksController < ApplicationController
   # cancancan roles
   load_and_authorize_resource
 
-  # GET /tasks
-  # GET /tasks.json
   def index
     @tasks = if params[:search].present?
                Task.search_by(search_params)
@@ -15,24 +13,19 @@ class TasksController < ApplicationController
              end
   end
 
-  # GET /tasks/1
-  # GET /tasks/1.json
   def show
     if params[:type] == 'json'
       render json: { data: [@task.address.latitude, @task.address.longitude], center: [@task.address.latitude, @task.address.longitude] }
     end
   end
 
-  # GET /tasks/new
   def new
     @task = Task.new
   end
 
-  # GET /tasks/1/edit
   def edit; end
 
-  # POST /tasks
-  # POST /tasks.json
+
   def create
     # task = Task.create(task_params)
     # redirect_to task
@@ -48,8 +41,6 @@ class TasksController < ApplicationController
     end
   end
 
-  # PATCH/PUT /tasks/1
-  # PATCH/PUT /tasks/1.json
   def update
     respond_to do |format|
       if @task.update(task_params)
@@ -62,8 +53,7 @@ class TasksController < ApplicationController
     end
   end
 
-  # DELETE /tasks/1
-  # DELETE /tasks/1.json
+
   def destroy
     @task.destroy
     respond_to do |format|
