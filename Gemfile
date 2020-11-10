@@ -35,11 +35,11 @@ gem 'simple_form'
 gem 'validates_timeliness', '~> 5.0.0.beta1'
 gem 'aws-sdk-s3', '~> 1.83'
 gem 'geocoder', '~> 1.6'
-gem 'rubocop-rails', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'rubocop-rails', require: false
 end
 
 group :development do

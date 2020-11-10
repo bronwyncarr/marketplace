@@ -5,4 +5,6 @@ class Charity < ApplicationRecord
   validates :description, length: { maximum: 5000 }
   
   has_many :tasks, dependent: :destroy
+
+  has_one_attached :image
 end
