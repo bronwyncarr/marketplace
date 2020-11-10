@@ -35,6 +35,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'faker'
 gem 'validates_timeliness', '~> 5.0.0.beta1'
+gem 'cancancan'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
