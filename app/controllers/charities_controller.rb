@@ -14,44 +14,33 @@ class CharitiesController < ApplicationController
 
   def create
     charity = Charity.create(charity_params)
-    redirect_to charity
-    #   if @charity.save!
-    #     format.html { redirect_to @charity, notice: 'Spot was successfully created.' }
-    #     format.json { render :show, status: :created, location: @charity }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @charity.errors, status: :unprocessable_entity }
-    #   end
+    if @charity.save!
+      redirect_to @charity, notice: 'Spot was successfully created.'
+    else
+      render :new
+    end
   end
 
   def update
-    respond_to do |format|
-      if @charity.update(charity_params)
-        format.html { redirect_to @charity, notice: 'charity was successfully updated.' }
-        format.json { render :show, status: :ok, location: @charity }
-      else
-        format.html { render :edit }
-        format.json { render json: @charity.errors, status: :unprocessable_entity }
-      end
+    if @charity.update(charity_params)
+      redirect_to @charity, notice: 'charity was successfully updated.'
+    else
+      render :edit
     end
   end
 
 
   def destroy
     @charity.destroy
-    respond_to do |format|
-      format.html { redirect_to charities_url, notice: 'charity was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to charities_url, notice: 'charity was successfully destroyed.'
   end
 
   private
+    def set_charity
+      @charity = Charity.find(params[:id])
+    end
 
-  def set_charity
-    @charity = Charity.find(params[:id])
-  end
-
-  def charity_params
-    params.require(:charity).permit :name, :description, :category, :image
-  end
+    def charity_params
+      params.require(:charity).permit :name, :description, :category, :image
+    end
 end

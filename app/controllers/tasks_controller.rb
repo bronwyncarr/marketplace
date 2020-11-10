@@ -27,39 +27,26 @@ class TasksController < ApplicationController
 
 
   def create
-    # task = Task.create(task_params)
-    # redirect_to task
     @task = current_user.tasks.new(task_params)
-    respond_to do |format|
-      if @task.save!
-        format.html { redirect_to @task, notice: 'Spot was successfully created.' }
-        format.json { render :show, status: :created, location: @task }
-      else
-        format.html { render :new }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
+    if @task.save!
+      redirect_to @task, notice: 'Spot was successfully created.'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
-        format.json { render :show, status: :ok, location: @task }
-      else
-        format.html { render :edit }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
+    if @task.update(task_params)
+      redirect_to @task, notice: 'Task was successfully updated.'
+    else
+      render :edit
     end
   end
 
 
   def destroy
     @task.destroy
-    respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to tasks_url, notice: 'Task was successfully destroyed.'
   end
 
   def save
@@ -67,14 +54,10 @@ class TasksController < ApplicationController
     @user_task = UserTask.new
     @user_task.task_id = params[:id]
     @user_task.user_id = current_user.id
-    respond_to do |format|
-      if @user_task.save
-        format.html { redirect_to tasks_url, notice: 'Opportunityw as successfully added to your list' }
-        format.json { render :show, status: :created, location: @task }
-      else
-        format.html { render :new }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
+    if @user_task.save
+      redirect_to tasks_url, notice: 'Opportunityw as successfully added to your list'
+    else
+      render :new
     end
   end
 
@@ -96,6 +79,6 @@ class TasksController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def task_params
-    params.require(:task).permit(:title, :summary, :description, :hours, :date, :image, :charity_id, skill_ids: [])
+    params.require(:task).permit(:title, :summary, :description, :hours, :date, :image, :charity_id, skill_ids: [], address_attributes: %i[street_add suburb state country])
   end
 end
