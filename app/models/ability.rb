@@ -7,7 +7,7 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
     user ||= User.new # guest user (not logged in)
-    can %i[index show new create], Task
+    can %i[index show new create save], Task
     can %i[edit update destroy], Task, user_id: user.id
     #
     # The first argument to `can` is the action you are giving the user
