@@ -5,12 +5,19 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    if params[:search].present?
+      @tasks = Task.search_by(search_params)
+    else
+      @tasks = Task.all
+    end
   end
 
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    if params[:type] == "json"
+      render json: {data: [@task.address.latitude, @task.address.longitude], center: [@task.address.latitude, @task.address.longitude]}
+    end
   end
 
   # GET /tasks/new
@@ -24,11 +31,13 @@ class TasksController < ApplicationController
 
   # POST /tasks
   # POST /tasks.json
-  def create
-    @task = Task.new(task_params)
+  def create 
+    # task = Task.create(task_params)
+    # redirect_to task
+    @task = current_user.tasks.new(task_params)
     respond_to do |format|
-      if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+      if @task.save!
+        format.html { redirect_to @task, notice: 'Spot was successfully created.' }
         format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new }
@@ -36,6 +45,7 @@ class TasksController < ApplicationController
       end
     end
   end
+
 
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
@@ -82,8 +92,17 @@ class TasksController < ApplicationController
       @task = Task.find(params[:id])
     end
 
+    def set_skills
+      @requiredskills = RequiredSkill.find(params[:id])
+    end
+
+    # Search parameters allowed through
+    def search_params
+      params.require(:search).permit(:title, skills: [])
+    end
+
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:title, :summary, :description, :hours, :date, :image, :charity_id)
+      params.require(:task).permit(:title, :summary, :description, :hours, :date, :image, :charity_id, skill_ids: [])
     end
 end
