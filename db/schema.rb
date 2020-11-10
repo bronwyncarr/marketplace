@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_08_174520) do
+ActiveRecord::Schema.define(version: 2020_11_10_010529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 2020_11_08_174520) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "street_add"
+    t.string "suburb"
+    t.string "state"
+    t.string "country"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.float "longitude"
+    t.float "latitude"
   end
 
   create_table "charities", force: :cascade do |t|
@@ -68,6 +79,8 @@ ActiveRecord::Schema.define(version: 2020_11_08_174520) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "charity_id", null: false
     t.text "summary"
+    t.bigint "address_id", null: false
+    t.index ["address_id"], name: "index_tasks_on_address_id"
     t.index ["charity_id"], name: "index_tasks_on_charity_id"
   end
 
@@ -96,6 +109,7 @@ ActiveRecord::Schema.define(version: 2020_11_08_174520) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "required_skills", "skills"
   add_foreign_key "required_skills", "tasks"
+  add_foreign_key "tasks", "addresses"
   add_foreign_key "tasks", "charities"
   add_foreign_key "user_tasks", "tasks"
   add_foreign_key "user_tasks", "users"

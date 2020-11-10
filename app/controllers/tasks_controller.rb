@@ -15,6 +15,9 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    if params[:type] == "json"
+      render json: {data: [@task.address.latitude, @task.address.longitude], center: [@task.address.latitude, @task.address.longitude]}
+    end
   end
 
   # GET /tasks/new
@@ -31,7 +34,6 @@ class TasksController < ApplicationController
   def create 
     # task = Task.create(task_params)
     # redirect_to task
-
     @task = current_user.tasks.new(task_params)
     respond_to do |format|
       if @task.save!

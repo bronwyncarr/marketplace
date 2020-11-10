@@ -13,7 +13,8 @@
   hours = Faker::Number.between(from: 1, to: 10)
   date = Faker::Date.forward(days: 365)
   charity_id = rand(1..5)
-  Task.create title: title, summary: summary, description: description, hours: hours, date: date, charity_id: charity_id
+  address_id = 1
+  Task.create title: title, summary: summary, description: description, hours: hours, date: date, charity_id: charity_id, address_id: address_id
 end
 
 5.times do
@@ -24,7 +25,7 @@ end
 end
 
 
-100.times do
+50.times do
   task_id = rand(1..10)
   skill_id = rand(1..5)
   RequiredSkill.create task_id: task_id, skill_id: skill_id

@@ -33,6 +33,7 @@
                 <div class="card-body">
                   <h5 class="card-title"><%= task.title %></h5>
                   <h5 class="card-title"><%= task.summary %></h5>
+                  <h5 class="card-title"><%= task.address.street_add %>, <%= task.address.suburb.capitalize %>, <%= task.address.state.capitalize %></h5>
                   <% task.skills.each do |skill| %>
                     <%= skill.name %>
                   <% end %>

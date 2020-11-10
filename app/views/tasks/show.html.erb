@@ -18,12 +18,16 @@
         <h5 class="card-text"><%= @task.summary %></h5>
         <p class="card-text"><%= @task.description %></p>
         <p class="card-text">Approximate time committment: <%= @task.hours %> hours</p>
-        <br>
         <p class="card-text"> Skills required: 
-          <% @task.skills.each do |skill| %>
-            <p><%= skill.name %></p>
-          <% end %>
+          <ul>
+            <% @task.skills.each do |skill| %>
+              <li><%= skill.name %></li>
+            <% end %>
+          </ul>
         <%= link_to "I'm Interested", save_path, class: "btn btn-secondary btn-lg" %>
+        <br>
+        <h5 class="card-title"><%= @task.address.street_add %>, <%= @task.address.suburb.capitalize %>, <%= @task.address.state.capitalize %></h5>
+        <div style="height: 400px" id="map"></div>
       </div>
     </div>
     <div class="card mb-3">
@@ -37,3 +41,5 @@
       <%= link_to 'Back', tasks_path %>
   </div>
 </div>
+
+<%= javascript_pack_tag "leaflet/show" %>
