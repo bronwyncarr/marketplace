@@ -6,9 +6,9 @@ class Ability
   def initialize(user)
     # Define abilities for the passed in user here. For example:
     #
-      user ||= User.new # guest user (not logged in)
-      can [:index, :show, :new, :create], Task
-      can [:edit, :update, :destroy], Task, user_id: user.id
+    user ||= User.new # guest user (not logged in)
+    can %i[index show new create], Task
+    can %i[edit update destroy], Task, user_id: user.id
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.

@@ -2,21 +2,21 @@ class Task < ApplicationRecord
   include Searchable
 
   # validates the minimum required fields are not blank and sets maximun values
-  validates_presence_of :title, :summary, :hours, :date
+  validates :title, :summary, :hours, :date, presence: true
   validates :summary, length: { in: 10..1000 }
   validates :description, length: { maximum: 5000 }
-  validates :hours, numericality: { only_integer: true, less_than: 24 }  
-  validates_date :date, on_or_after: lambda { Date.current }
+  validates :hours, numericality: { only_integer: true, less_than: 24 }
+  validates_date :date, on_or_after: -> { Date.current }
 
   # # Allows users to create a task
   # belongs_to :user
-  
+
   # Allows users to sign up for many tasks as an EOI
-  has_many :user_tasks
+  has_many :user_tasks, dependent: :destroy
   has_many :users, through: :user_tasks
 
   # Allows many skills skills to be set for each task.
-  has_many :required_skills
+  has_many :required_skills, dependent: :destroy
   has_many :skills, through: :required_skills
 
   # Allows each task to have an address and the address will be deleted with the task.
@@ -36,6 +36,6 @@ class Task < ApplicationRecord
   accepts_nested_attributes_for :charity
 
   # Acope for searching
-  scope :search_by_title, -> (title) { where('title ILIKE ?', "%#{title}%") } 
-  scope :search_by_skills, -> (skill_ids) { joins(:skills).merge(Skill.where(id: skill_ids)) }
+  scope :search_by_title, ->(title) { where('title ILIKE ?', "%#{title}%") }
+  scope :search_by_skills, ->(skill_ids) { joins(:skills).merge(Skill.where(id: skill_ids)) }
 end

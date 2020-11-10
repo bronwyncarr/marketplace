@@ -1,6 +1,6 @@
 class Address < ApplicationRecord
   # Allows each address to have one or many tasks.
-  has_many :tasks
+  has_many :tasks, dependent: :destroy
 
   geocoded_by :full_street_address
   after_validation :geocode
