@@ -1,6 +1,9 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy, :save] 
   before_action :authenticate_user!, except: [:index]
+  
+  # cancancan roles
+  load_and_authorize_resource
 
   # GET /tasks
   # GET /tasks.json

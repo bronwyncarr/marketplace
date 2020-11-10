@@ -8,6 +8,9 @@ class Task < ApplicationRecord
   validates :hours, numericality: { only_integer: true, less_than: 24 }  
   validates_date :date, on_or_after: lambda { Date.current }
 
+  # # Allows users to create a task
+  # belongs_to :user
+  
   # Allows users to sign up for many tasks as an EOI
   has_many :user_tasks
   has_many :users, through: :user_tasks

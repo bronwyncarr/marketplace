@@ -24,7 +24,17 @@
               <li><%= skill.name %></li>
             <% end %>
           </ul>
-        <%= link_to "I'm Interested", save_path, class: "btn btn-secondary btn-lg" %>
+
+        <% if can? :edit, @task %>
+          <%= link_to "Edit", edit_task_path(@task), class: "btn show-btn btn-secondary" %>
+          <%= link_to 'Delete', task_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn show-btn btn-secondary" %>
+        <% end %>
+        <br>
+        <% if @task.user_id != current_user.id %>
+          <%= link_to "I'm Interested", save_path, class: "btn btn-secondary btn-lg" %>
+        <% end %>
+
+
         <br>
         <h5 class="card-title"><%= @task.address.street_add %>, <%= @task.address.suburb.capitalize %>, <%= @task.address.state.capitalize %></h5>
         <div style="height: 400px" id="map"></div>
