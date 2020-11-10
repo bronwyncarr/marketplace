@@ -1,0 +1,38 @@
+<p>
+  <strong>Name:</strong>
+  <%= @charity.name %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @charity.category %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @charity.description %>
+</p>
+
+<%= link_to 'Back', charities_path %>
+
+<%= link_to 'Edit', edit_charity_path(@charity) %> |
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#charityModal">
+  Edit
+</button>
+
+<div class="modal fade" id="charityModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'form', charity: @charity %>
+      </div>
+    </div>
+  </div>
+</div>

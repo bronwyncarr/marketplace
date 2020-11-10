@@ -19,8 +19,9 @@ class Task < ApplicationRecord
   has_many :required_skills, dependent: :destroy
   has_many :skills, through: :required_skills
 
-  # Allows each task to have an address and the address will be deleted with the task.
+  # Allows each task to have an address.
   belongs_to :address
+  accepts_nested_attributes_for :address
 
   # Allows users to create a new task without double ups.
   # def skills_attributes=(skill_attributes)
@@ -30,8 +31,10 @@ class Task < ApplicationRecord
   #   end
   # end
 
-  # Allows users to add an image and reference a charity when creating a task.
+  # Allows users to add an image
   has_one_attached :image
+  
+  # Allows each task to have a charity.
   belongs_to :charity
   accepts_nested_attributes_for :charity
 

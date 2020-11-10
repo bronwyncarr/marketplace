@@ -1,4 +1,6 @@
 class CharitiesController < ApplicationController
+  before_action :set_charity, only: %i[show edit update destroy save]
+
   def index
     @charities = Charity.all
   end
@@ -13,9 +15,9 @@ class CharitiesController < ApplicationController
   def edit; end
 
   def create
-    charity = Charity.create(charity_params)
+    @charity = Charity.create(charity_params)
     if @charity.save!
-      redirect_to @charity, notice: 'Spot was successfully created.'
+      redirect_to @charity, notice: 'Charity was successfully created.'
     else
       render :new
     end
@@ -23,7 +25,7 @@ class CharitiesController < ApplicationController
 
   def update
     if @charity.update(charity_params)
-      redirect_to @charity, notice: 'charity was successfully updated.'
+      redirect_to @charity, notice: 'Charity was successfully updated.'
     else
       render :edit
     end
@@ -32,7 +34,7 @@ class CharitiesController < ApplicationController
 
   def destroy
     @charity.destroy
-    redirect_to charities_url, notice: 'charity was successfully destroyed.'
+    redirect_to charities_url, notice: 'Charity was successfully destroyed.'
   end
 
   private

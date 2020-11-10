@@ -5,6 +5,12 @@
   <div class="form-inputs">
     <%= f.input :title %>
     <%= f.association :charity %>
+    <%= f.simple_fields_for :address, Address.new do |a| %>
+      <%= a.input :street_add %>
+      <%= a.input :suburb %>
+      <%= a.input :state %>
+      <%= a.input :country %>
+    <% end %>
     <%= f.input :summary, as: :text %>
     <%= f.input :description, as: :text %>
     <%= f.input :hours %>
