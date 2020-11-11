@@ -26,9 +26,9 @@ class TasksController < ApplicationController
 
   def edit; end
 
-
   def create
     @task = current_user.tasks.new(task_params)
+    byebug
     if @task.save
       redirect_to @task, notice: 'Task was successfully created.'
     else
@@ -80,6 +80,6 @@ class TasksController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def task_params
-    params.require(:task).permit(:title, :summary, :description, :hours, :date, :image, :charity_id, skill_ids: [], addresses_attributes: %i[street_add suburb state country])
+    params.require(:task).permit(:title, :summary, :description, :hours, :date, :image, :charity_id, skill_ids: [], address_attributes: %i[street_add suburb state country])
   end
 end

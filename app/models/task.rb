@@ -12,8 +12,8 @@ class Task < ApplicationRecord
   belongs_to :user
 
   # Allows users to sign up for many tasks as an EOI
-  has_many :user_tasks, dependent: :destroy
-  has_many :users, through: :user_tasks
+  # has_many :user_tasks, dependent: :destroy
+  # has_many :users, through: :user_tasks
 
   # Allows many skills skills to be set for each task.
   has_many :required_skills, dependent: :destroy

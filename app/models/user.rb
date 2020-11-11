@@ -8,6 +8,6 @@ class User < ApplicationRecord
   has_many :tasks
 
   # Allows users to register expression of interest
-  has_many :user_tasks, dependent: :destroy
-  has_many :tasks, through: :user_tasks
+  # has_many :user_tasks, dependent: :destroy
+  # has_many :tasks, through: :user_tasks
 end
