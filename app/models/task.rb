@@ -9,7 +9,7 @@ class Task < ApplicationRecord
   validates_date :date, on_or_after: -> { Date.current }
 
   # # Allows users to create a task
-  # belongs_to :user
+  belongs_to :user
 
   # Allows users to sign up for many tasks as an EOI
   has_many :user_tasks, dependent: :destroy
@@ -20,7 +20,7 @@ class Task < ApplicationRecord
   has_many :skills, through: :required_skills
 
   # Allows each task to have an address.
-  belongs_to :address
+  has_one :address, dependent: :destroy
   accepts_nested_attributes_for :address
 
   # Allows users to create a new task without double ups.
