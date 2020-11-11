@@ -6,8 +6,7 @@
     </aside>
     <div class="col-9">
       <div class="container">
-      <p id="notice"><%= notice %></p>
-        <h1>Volunteer Opportunities</h1>
+        <h1 class="text-center">Volunteer Opportunities</h1>
 
         <%# Search Form %>
         <%= form_with(scope: :search, url: tasks_path, method: 'get', local: true) do |f| %>
@@ -25,9 +24,7 @@
           <div class="card mb-3" style="max-width: 900px;">
             <div class="row no-gutters">
               <div class="col-md-4">
-                <% if task.image.attached? == true %>
-                  <%= image_tag task.image, class:'card-img-top' %>
-                <% end %>
+                <%= image_tag image_for(task), class: 'card-img-top' %>
               </div>
               <div class="col-md-8">
                 <div class="card-body">

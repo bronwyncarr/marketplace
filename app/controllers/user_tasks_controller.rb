@@ -1,6 +1,6 @@
 class UserTasksController < ApplicationController
-  before_action :set_user_task, only: [:show, :update, :destroy]
-  before_action :user_tasks_by_user, only: [:index, :chart]
+  before_action :set_user_task, only: %i[show destroy]
+  before_action :user_tasks_by_user, only: :index
 
   # GET /user_tasks
   # GET /user_tasks.json
@@ -24,17 +24,18 @@ class UserTasksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def user_tasks_by_user
-      @user_tasks = UserTask.where(user: current_user[:id])
-    end
 
-    def set_user_task
-      @user_task = UserTask.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def user_tasks_by_user
+    @user_tasks = UserTask.where(user: current_user[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def user_task_params
-      params.require(:user_task).permit(:user_id, :task_id)
-    end
+  def set_user_task
+    @user_task = UserTask.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def user_task_params
+    params.require(:user_task).permit(:user_id, :task_id)
+  end
 end

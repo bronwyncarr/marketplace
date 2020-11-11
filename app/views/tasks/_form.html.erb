@@ -1,5 +1,3 @@
-
-
 <%= simple_form_for(@task) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -7,6 +5,12 @@
   <div class="form-inputs">
     <%= f.input :title %>
     <%= f.association :charity %>
+    <%= f.simple_fields_for :address, Address.new do |a| %>
+      <%= a.input :street_add %>
+      <%= a.input :suburb %>
+      <%= a.input :state %>
+      <%= a.input :country %>
+    <% end %>
     <%= f.input :summary, as: :text %>
     <%= f.input :description, as: :text %>
     <%= f.input :hours %>

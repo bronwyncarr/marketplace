@@ -1,0 +1,20 @@
+<h2>Charity list</h2>
+  <% if @charities %>
+    <% @charities.each do |charity| %>
+      <div class="card" style="width: 18rem;">
+        <% if charity.image.attached? == true %>
+          <%= image_tag charity.image, class: "card-img-top" %>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title"><%= charity.name %></h5>
+          <h5 class="card-title"><%= charity.category %></h5>
+          <h5 class="card-title"><%= charity.description %></h5>
+            <%= link_to "Details", charity, class: "btn btn-secondary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <h4>There are no charities registered yet.</h4>
+  <% end %>
+</div>  
