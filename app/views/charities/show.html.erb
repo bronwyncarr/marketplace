@@ -1,3 +1,5 @@
+<h1>Charities</h1>
+
 <p>
   <strong>Name:</strong>
   <%= @charity.name %>
@@ -13,9 +15,18 @@
   <%= @charity.description %>
 </p>
 
+  <% if @charity.image.attached? %>
+    <%= image_tag @charity.image %>
+  <% end %>
+
 <%= link_to 'Back', charities_path %>
 
 <%= link_to 'Edit', edit_charity_path(@charity) %> |
+
+
+
+    
+
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#charityModal">
   Edit

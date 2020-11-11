@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :timeoutable
 
   # # Allows users to create a task
-  # has_many :tasks
+  has_many :tasks
 
   # Allows users to register expression of interest
   has_many :user_tasks, dependent: :destroy

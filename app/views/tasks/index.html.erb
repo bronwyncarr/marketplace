@@ -24,13 +24,13 @@
           <div class="card mb-3" style="max-width: 900px;">
             <div class="row no-gutters">
               <div class="col-md-4">
-                <%= image_tag image_for(task), class: 'card-img-top' %>
+                <%= image_tag image_for(task), class: 'card-img' %>
               </div>
               <div class="col-md-8">
                 <div class="card-body">
                   <h5 class="card-title"><%= task.title %></h5>
                   <h5 class="card-title"><%= task.summary %></h5>
-                  <h5 class="card-title"><%= task.address.street_add %>, <%= task.address.suburb.capitalize %>, <%= task.address.state.capitalize %></h5>
+                  <h5 class="card-title"><%= task.address.street_add %>, <%= task.address.suburb %>, <%= task.address.state %></h5>
                   <% task.skills.each do |skill| %>
                     <%= skill.name %>
                   <% end %>
