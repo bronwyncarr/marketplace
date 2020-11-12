@@ -3,9 +3,16 @@
   <%= render 'head' %>
   <body>
     <%= render 'navbar' %>
-    <div class="container">
-      <%= render 'flash_message' %>
-      <%= yield %>
+    <%# <div class="container"> %>
+      <div class="row">
+        <nav class="col-md-3 d-none d-md-block bg-light sidebar ">
+          <%= render 'sidebar' %>
+        </nav>
+        <div class="col-md-9 ml-sm-auto">
+          <%= render 'flash_message' %>
+          <%= yield %>
+        </div>
+      <%# </div> %>
     </div> 
   </body>
 </html>

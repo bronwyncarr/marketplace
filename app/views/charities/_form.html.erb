@@ -4,7 +4,7 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
-    <%= f.input :category %>
+    <%= f.association :charity_kind, label: 'Type of Charity'%>
     <%= f.input :description, as: :text %>
     <%= f.file_field :image, accept: "image/png, image/jpg, image/jpeg"%>
     <%# <%= f.collection_check_boxes :skill_ids, Skill.all, :id, :name %>
