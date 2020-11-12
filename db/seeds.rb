@@ -6,6 +6,18 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+5.times do
+  name = Faker::Lorem.word
+  CharityKind.create name: name
+end
+
+5.times do
+  name = Faker::Job.title
+  charity_kind_id = rand(1..5)
+  description = Faker::Lorem.sentence(word_count: 200)
+  Charity.create name: name, description: description, charity_kind_id: charity_kind_id
+end  
+
 10.times do
   title = Faker::Job.title
   summary = Faker::Lorem.sentence(word_count: 20)
@@ -15,7 +27,7 @@
   charity_id = rand(1..5)
   user_id = 1
   Task.create title: title, summary: summary, description: description, hours: hours, date: date, charity_id: charity_id, user_id: user_id
-end
+end  
 
 count = 0
 10.times do
@@ -25,25 +37,18 @@ count = 0
   country = "Australia"
   task_id = count += 1
   Address.create street_add: street_add, suburb: suburb, state: state, country: country, task_id: task_id
-end
-
-5.times do
-  name = Faker::Job.title
-  category = Faker::Lorem.word
-  description = Faker::Lorem.sentence(word_count: 200)
-  Charity.create name: name, category: category, description: description
-end
+end  
 
 
 50.times do
   task_id = rand(1..10)
   skill_id = rand(1..5)
   RequiredSkill.create task_id: task_id, skill_id: skill_id
-end
+end  
 
 5.times do
   name = Faker::Lorem.word
   Skill.create name: name
-end
+end  
 
 

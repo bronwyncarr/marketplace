@@ -1,53 +1,44 @@
-
-<div class="row">
-  <aside class="col-3">
-    <%= render partial: 'shared/aside' %>
-  </aside>
-  <div class="col-9">
-    <div class="card mb-3">
-
-      <%= image_tag image_for(@task), class: 'card-img' %>
-
-      <%= link_to 'Back', tasks_path %>
-      <div class="card-body">
-        <div class="title-container">
-          <h5 class="card-title"><%= @task.title %></h5>
-          <h5 class="card-title"><%= @task.date.to_formatted_s(:rfc822)  %></h5>
-        </div>
-        <h5 class="card-title"><%= @task.charity.name %></h5>
-        <h5 class="card-text"><%= @task.summary %></h5>
-        <p class="card-text"><%= @task.description %></p>
-        <p class="card-text">Approximate time committment: <%= @task.hours %> hours</p>
-        <p class="card-text"> Skills required: 
-          <ul>
-            <% @task.skills.each do |skill| %>
-              <li><%= skill.name %></li>
-            <% end %>
-          </ul>
-        <% if can? :edit, @task %>
-          <%= link_to "Edit", edit_task_path(@task), class: "btn show-btn btn-secondary" %>
-          <%= link_to 'Delete', task_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn show-btn btn-secondary" %>
-        <% end %>
-        <br>
-        <% if @task.user_id != current_user.id %>
-          <%= link_to "I'm Interested", save_path, class: "btn btn-secondary btn-lg" %>
-        <% end %>
-        <h5 class="card-title"><%= @task.address.street_add %>, <%= @task.address.suburb %>, <%= @task.address.state %></h5>
-
-
-        <br>
-           <div style="height: 400px" id="map"></div>
+<h1 class="text-center">HEADING</h1>
+  <div class="card mb-3">
+    <%= image_tag image_for(@task), class: 'card-img' %>
+    <%= link_to 'Back', tasks_path %>
+    <div class="card-body">
+      <div class="title-container">
+        <h5 class="card-title"><%= @task.title %></h5>
+        <h5 class="card-title"><%= @task.date.to_formatted_s(:rfc822)  %></h5>
       </div>
+      <h5 class="card-title"><%= @task.charity.name %></h5>
+      <h5 class="card-text"><%= @task.summary %></h5>
+      <p class="card-text"><%= @task.description %></p>
+      <p class="card-text">Approximate time committment: <%= @task.hours %> hours</p>
+      <p class="card-text"> Skills required: 
+      <ul>
+        <% @task.skills.each do |skill| %>
+          <li><%= skill.name %></li>
+        <% end %>
+      </ul>
+      <% if can? :edit, @task %>
+        <%= link_to "Edit", edit_task_path(@task), class: "btn show-btn btn-secondary" %>
+        <%= link_to 'Delete', task_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn show-btn btn-secondary" %>
+      <% end %>
+      <br>
+      <% if @task.user_id != current_user.id %>
+        <%= link_to "I'm Interested", save_path, class: "btn btn-secondary btn-lg" %>
+      <% end %>
+      <h5 class="card-title"><%= @task.address.street_add %>, <%= @task.address.suburb.capitalize %>, <%= @task.address.state.capitalize %></h5>
+      <br>
+       <div style="height: 400px" id="map"></div>
     </div>
-    <div class="card mb-3">
-      <div class="card-body">
-        <h5 class="card-title">About <%= @task.charity.name %>:</h5>
-        <p class="card-text"><%= @task.description %></p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
+  </div>
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">About <%= @task.charity.name %>:</h5>
+      <p class="card-text"><%= @task.description %></p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
-      <%= link_to 'Edit', edit_task_path(@task) %> |
-      <%= link_to 'Back', tasks_path %>
+  </div>
+    <%= link_to 'Edit', edit_task_path(@task) %> |
+    <%= link_to 'Back', tasks_path %>
   </div>
 </div>
 
