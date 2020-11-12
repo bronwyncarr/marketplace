@@ -5,7 +5,7 @@ class Task < ApplicationRecord
   validates :title, :summary, :hours, :date, presence: true
   validates :summary, length: { in: 10..1000 }
   validates :description, length: { maximum: 5000 }
-  validates :hours, numericality: { only_integer: true, less_than: 24 }
+  validates :hours, numericality: { less_than: 24 }
   validates_date :date, on_or_after: -> { Date.current }
 
   # # Allows users to create a task
