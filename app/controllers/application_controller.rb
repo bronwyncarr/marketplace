@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
   add_flash_types :error, :success
   layout :layout_for_resource
 
+  def after_sign_in_path_for(home)
+    tasks_path
+  end
+
   protected
 
   def layout_for_resource
