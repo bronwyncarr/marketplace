@@ -1,0 +1,24 @@
+<h2>My Expressions Of Interest</h2>
+<% @interests.each do |interest| %>
+  <div class="card mb-3" style="max-width: 900px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <% if interest.task.image.attached? == true %>
+          <%= image_tag interest.task.image, class:'card-img-top' %>
+        <% end %>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><%= interest.task.title %></h5>
+          <h5 class="card-title"><%= interest.task.summary %></h5>
+          <div class="date-time-containter">
+            <p class="card-text text-muted"><%= interest.task.date.to_formatted_s(:rfc822) %></p>
+            <p class="card-text text-muted"><%= interest.task.hours %> hours</p>
+          </div>
+          <%= link_to 'More details', interest.task %>
+          <%= link_to 'Delete from my list', interest, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
