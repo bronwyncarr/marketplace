@@ -4,14 +4,12 @@
       <div class="card mb-3" style="max-width: 900px;">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <% if charity.image.attached? == true %>
-              <%= image_tag charity.image, class: "card-img-top" %>
-            <% end %>
+            <%= image_tag charity_image_for(charity), class: 'card-img'  %> 
           </div>
           <div class="col-md-8">
             <div class="card-body">
               <h5 class="card-title"><%= charity.name %></h5>
-              <h5 class="card-title"><%= charity.category %></h5>
+              <h5 class="card-title"><%= charity.charity_kind.name %></h5>
               <%= link_to "Details", charity, class: "btn btn-secondary" %>
             </div>
           </div>

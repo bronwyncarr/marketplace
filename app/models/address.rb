@@ -1,4 +1,7 @@
 class Address < ApplicationRecord
+  validates :street_add, :suburb, presence: true
+  validates :street_add, :suburb, :state, :country, length: { maximum: 500 }
+  
   # Allows each address to have one or many tasks.
   belongs_to :task
 

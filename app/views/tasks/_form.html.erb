@@ -5,7 +5,7 @@
     <%= f.input :title %>
     <%= f.association :charity %>
     <%= f.simple_fields_for :address do |a| %>
-      <%= a.input :street_add %>
+      <%= a.input :street_add, label: 'Street address', placeholder: '1/100 Main street' %>
       <%= a.input :suburb %>
       <%= a.input :state %>
       <%= a.input :country %>
