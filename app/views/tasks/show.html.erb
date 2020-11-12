@@ -5,9 +5,9 @@
   </aside>
   <div class="col-9">
     <div class="card mb-3">
-      <% if @task.image.attached? == true %>
-        <%= image_tag @task.image, class:'card-img-top' %>
-      <% end %>
+
+      <%= image_tag image_for(@task), class: 'card-img' %>
+
       <%= link_to 'Back', tasks_path %>
       <div class="card-body">
         <div class="title-container">

@@ -28,7 +28,6 @@ class TasksController < ApplicationController
 
   def create
     @task = current_user.tasks.new(task_params)
-    byebug
     if @task.save
       redirect_to @task, notice: 'Task was successfully created.'
     else
@@ -52,10 +51,10 @@ class TasksController < ApplicationController
 
   def save
     # REFACTOR THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    @user_task = UserTask.new
-    @user_task.task_id = params[:id]
-    @user_task.user_id = current_user.id
-    if @user_task.save
+    @interest = Interest.new
+    @interest.task_id = params[:id]
+    @interest.user_id = current_user.id
+    if @interest.save
       redirect_to tasks_url, notice: 'Opportunityw as successfully added to your list'
     else
       render :new
