@@ -4,7 +4,8 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h4>Thanks for expressing interest in volunteering!.</h4>
-    <p>The charity has been notified of your interest and will be in touch!</p>
+    <h4>Hi <%= @user.username %></h4>
+    <h4>Thanks for expressing your interest to volunteer for <%= @interest.task.charity.name %>!</h4>
+    <p>The <%= @interest.task.charity.name %> has been notified of your interest in <%= interest.task.title %> and will be in touch.</p>
   </body>
 </html>

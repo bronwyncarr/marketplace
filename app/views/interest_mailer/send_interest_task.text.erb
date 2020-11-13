@@ -1,2 +1,3 @@
-Thanks for expressing interest in volunteering.
-The charity has been notified of your interest and will be in touch!
+    <h4>Hi <%= @user.username %></h4>
+    <h4>Thanks for expressing your interest to volunteer for <%= @interest.task.charity.name %>!</h4>
+    <p>The <%= @interest.task.charity.name %> has been notified of your interest in <%= interest.task.title %> and will be in touch.</p>
