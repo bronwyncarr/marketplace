@@ -6,13 +6,12 @@ class InterestsController < ApplicationController
     @interests = Interest.all.where(user_id: current_user[:id])
   end
 
-  def show
-  end
+  def show; end
 
   def destroy
     @interest.destroy
     redirect_to interests_url, notice: 'interest was successfully destroyed.'
-    end
+  end
 
   private
 
@@ -30,5 +29,3 @@ class InterestsController < ApplicationController
     params.require(:interest).permit(:user_id, :task_id)
   end
 end
-
-

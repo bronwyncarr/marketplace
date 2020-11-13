@@ -5,8 +5,7 @@ class CharitiesController < ApplicationController
     @charities = Charity.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @charity = Charity.new
@@ -31,18 +30,18 @@ class CharitiesController < ApplicationController
     end
   end
 
-
   def destroy
     @charity.destroy
     redirect_to charities_url, notice: 'Charity was successfully destroyed.'
   end
 
   private
-    def set_charity
-      @charity = Charity.find(params[:id])
-    end
 
-    def charity_params
-      params.require(:charity).permit :name, :description, :charity_kind_id, :image
-    end
+  def set_charity
+    @charity = Charity.find(params[:id])
+  end
+
+  def charity_params
+    params.require(:charity).permit :name, :description, :charity_kind_id, :image
+  end
 end
