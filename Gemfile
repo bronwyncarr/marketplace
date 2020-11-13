@@ -27,14 +27,14 @@ gem 'turbolinks', '~> 5'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 # Custome gems
+gem 'aws-sdk-s3', '~> 1.83'
 gem 'cancancan'
 gem 'devise'
 gem 'faker'
+gem 'geocoder', '~> 1.6'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'validates_timeliness', '~> 5.0.0.beta1'
-gem 'aws-sdk-s3', '~> 1.83'
-gem 'geocoder', '~> 1.6'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

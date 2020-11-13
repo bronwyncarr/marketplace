@@ -32,7 +32,7 @@ class Task < ApplicationRecord
 
   # Allows users to add an image
   has_one_attached :image
-  
+
   # Allows each task to have a charity.
   belongs_to :charity
   accepts_nested_attributes_for :charity

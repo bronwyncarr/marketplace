@@ -43,7 +43,6 @@ class TasksController < ApplicationController
     end
   end
 
-
   def destroy
     @task.destroy
     redirect_to tasks_url, notice: 'Task was successfully destroyed.'
@@ -51,12 +50,12 @@ class TasksController < ApplicationController
 
   # Saves task to current users interests list and send email
   def save
-    @interest = current_user.interests.new(task_id: params[:id] )
+    @interest = current_user.interests.new(task_id: params[:id])
     if @interest.save
       InterestMailer.send_interest_email(current_user, @task).deliver
       redirect_to tasks_url, notice: 'Opportunity as successfully added to your list'
     else
-      render :index, notice: 'Opportunity was not able to be added to your profile. Please choose another.' 
+      render :index, notice: 'Opportunity was not able to be added to your profile. Please choose another.'
     end
   end
 

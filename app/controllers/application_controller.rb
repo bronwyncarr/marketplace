@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   add_flash_types :error, :success
   layout :layout_for_resource
 
-  def after_sign_in_path_for(home)
+  def after_sign_in_path_for(_home)
     tasks_path
   end
 
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 
   def layout_for_resource
     if devise_controller?
-      'devise'   
+      'devise'
     elsif home_controller?
       'home'
     else

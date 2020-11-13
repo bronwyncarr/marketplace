@@ -1,5 +1,4 @@
 module TasksHelper
-
   def image_for(task)
     if task.image.present?
       task.image
@@ -10,4 +9,3 @@ module TasksHelper
     end
   end
 end
-

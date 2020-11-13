@@ -4,6 +4,6 @@ class InterestMailer < ApplicationMailer
   def send_interest_email(user, task)
     @user = user
     @task = task
-    mail( :to => @user.email,:subject => 'Thanks for signing up to make a difference!' )
+    mail(to: @user.email, subject: 'Thanks for signing up to make a difference!')
   end
 end
