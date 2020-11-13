@@ -50,14 +50,11 @@ class TasksController < ApplicationController
   end
 
   def save
-    # REFACTOR THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    @interest = Interest.new
-    @interest.task_id = params[:id]
-    @interest.user_id = current_user.id
+    @interest = current_user.interests.new(task_id: params[:id] )
     if @interest.save
-      redirect_to tasks_url, notice: 'Opportunityw as successfully added to your list'
+      redirect_to tasks_url, notice: 'Opportunity as successfully added to your list'
     else
-      render :new
+      render :index, notice: 'Opportunity was not able to be added to your profile. Please choose another.' 
     end
   end
 

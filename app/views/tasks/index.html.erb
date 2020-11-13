@@ -1,18 +1,21 @@
 <h1 class="text-center">Volunteer Opportunities</h1>
 
 <%# Search Form %>
-<%= form_with(scope: :search, url: tasks_path, method: 'get', local: true) do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+<%= form_with(scope: :search, url: tasks_path, method: 'get', local: true, class: "form-group form-row") do |f| %>
+  <%= f.text_field :title, class: 'form-control col', placeholder: 'Search by Name'  %>
+  <%= f.submit 'Search'%>
+<% end %>
 
-  <%= f.label :skills %>
-  <%= f.collection_select :skills, Skill.all, :id, :name, {}, { multiple: true } %>
+<%= form_with(scope: :search, url: tasks_path, method: 'get', local: true, class: "form-group form-row"
+) do |f| %>
+  <%= f.collection_select :skills, Skill.all, :id, :name, {}, { multiple: true,  class: "form-control col"} %>
 
   <%= f.submit 'Search' %>
 <% end %>
 
 <%# Display each task in a horizontal card  %>
-<% @tasks.each do |task| %>
+<% @sorted_tasks = @tasks.sort_by { |n| n[:date]} %>
+<% @sorted_tasks.each do |task| %>
   <div class="card mb-3" style="max-width: 900px;">
     <div class="row no-gutters">
       <div class="col-md-4">

@@ -43,6 +43,6 @@ class CharitiesController < ApplicationController
     end
 
     def charity_params
-      params.require(:charity).permit :name, :description, :category, :image
+      params.require(:charity).permit :name, :description, :charity_kind_id, :image
     end
 end

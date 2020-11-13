@@ -1,11 +1,8 @@
-<h2>My Expressions Of Interest</h2>
 <% @interests.each do |interest| %>
   <div class="card mb-3" style="max-width: 900px;">
     <div class="row no-gutters">
       <div class="col-md-4">
-        <% if interest.task.image.attached? == true %>
-          <%= image_tag interest.task.image, class:'card-img-top' %>
-        <% end %>
+        <%= image_tag interest_image_for(interest), class: 'card-img' %>
       </div>
       <div class="col-md-8">
         <div class="card-body">
