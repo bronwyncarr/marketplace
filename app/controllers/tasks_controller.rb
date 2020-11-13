@@ -53,7 +53,7 @@ class TasksController < ApplicationController
     @interest = current_user.interests.new(task_id: params[:id])
     if @interest.save
       # InterestMailer.send_interest_email(current_user, @task).deliver
-      redirect_to @task, notice: 'Opportunity as successfully added to your list'
+      redirect_to tasks_url, notice: 'Opportunity as successfully added to your list'
     else
       render :index, notice: 'Opportunity was not able to be added to your profile. Please choose another.'
     end
