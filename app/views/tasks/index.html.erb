@@ -1,13 +1,15 @@
 <h1 class="text-center">Volunteer Opportunities</h1>
 
 <%# Search Form %>
-<%= simple_form_for :search, url: tasks_path, method: 'GET', local: true do |f| %>
-  <%= f.input :title %>
-  <%= f.submit 'Search' %>
+<%= form_with(scope: :search, url: tasks_path, method: 'get', local: true, class: "form-group form-row") do |f| %>
+  <%= f.text_field :title, class: 'form-control col', placeholder: 'Search by Name'  %>
+  <%= f.submit 'Search'%>
 <% end %>
 
-<%= simple_form_for :search, url: tasks_path, method: 'get', local: true do |f| %>
-  <%= f.input :skill, collection: Skill.all, value_method: :id %>
+<%= form_with(scope: :search, url: tasks_path, method: 'get', local: true, class: "form-group form-row"
+) do |f| %>
+  <%= f.collection_select :skills, Skill.all, :id, :name, {}, { multiple: true,  class: "form-control col"} %>
+
   <%= f.submit 'Search' %>
 <% end %>
 
