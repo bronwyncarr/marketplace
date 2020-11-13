@@ -1,7 +1,7 @@
 class InterestMailer < ApplicationMailer
   default from: 'cam022019@coderacademy.edu.au'
 
-  def send_interest_task(user, @interest)
+  def send_interest_task(user, interest)
     @user = user
     @interest = interest
     mail(to: @user.email,
