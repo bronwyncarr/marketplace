@@ -1,67 +1,19 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-// .hero-image {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: flex-start;
-//   background: image-url("hands");
-//   height: 100vh;
-//   margin: 0;
-//   color:#3e403b;
-//   background-position: center;
-//   background-repeat: no-repeat;
-//   background-size: cover;
-//   .text-container {
-//     max-width: 50%;
-//   }
-
-//   h1, h2, .buttons {
-//     padding-left: 30px;
-//   }
-//   h1 {
-//     font-size: 4rem;
-//   }
-// }
-
-// .why h2 {
-//   margin-top: 50px;
-//   text-align: center;
-// }
-
-// .why p {
-//   font-size: 1rem;
-//   text-align: center;
-// }
-
-// .card-container {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   flex-wrap: wrap;
-//   .card {
-//     margin: 20px;
-//   }
-// }
-
-// .food {
-//   background-color: darkseagreen;
-// }
-
-// .image {
-//   max-width: 100%;
-// }
-
-// .text-quote {
-//  display: flex;
-//  align-items: center;
-//  font-size: 1.5rem;
-//  color: darkgreen;
-//  span {
-//    font-size: 4rem;
-//  }
-//  p {
-//    margin: 0 100px;
-//  }
-// }
+.hero-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background: image-url("hands");
+  height: 100vh;
+  margin: 0;
+  color:#3e403b;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  .text-container {
+    max-width: 50%;
+  }
+}
