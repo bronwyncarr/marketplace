@@ -17,9 +17,9 @@ class ApplicationController < ActionController::Base
 
   def layout_for_resource
     if devise_controller?
-      'devise'
+      'page'
     elsif home_controller?
-      'home'
+      'index'
     else
       'application'
     end
