@@ -3,11 +3,11 @@
   <%= render 'head' %> 
   <body>
     <div class="row p-0 m-0 min-vh-100">
-      <div class="col d-flex justify-content-center align-items-center">
-        <%= yield %>
+      <div class="col d-none d-lg-block ">
+        <%= image_tag 'login.jpg', class: 'img-fluid h-100 w-100' %>
       </div>
-      <div class="col d-none d-lg-block p-0">
-        <%= image_tag 'food1.jpg', class: 'login-img' %>
+      <div class="col">
+        <%= yield %>
       </div>
     </div>
   </body>

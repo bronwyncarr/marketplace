@@ -1,0 +1,8 @@
+<h1>Interest in this task</h1>
+
+<h4>The following people have expressed interest in participating in this task</h4>
+  <ul>
+    <% @found_people.each do |person| %>
+    <li><%= person.username %> - <%= person.email %></li>
+  <% end %>
+</ul>
