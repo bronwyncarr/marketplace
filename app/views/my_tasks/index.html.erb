@@ -1,0 +1,24 @@
+<% @tasks.each do |task| %>
+  <div class="card mb-3" style="max-width: 900px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <%= image_tag image_for(task), class: 'card-img' %>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><%= task.title %></h5>
+          <h5 class="card-title"><%= task.summary %></h5>
+          <h5 class="card-title"><%= task.address.street_add %>, <%= task.address.suburb %>, <%= task.address.state %></h5>
+          <% task.skills.each do |skill| %>
+            <%= skill.name %>
+          <% end %>
+          <div class="date-time-containter">
+            <p class="card-text text-muted"><%= task.date.to_formatted_s(:rfc822) %></p>
+            <p class="card-text text-muted"><%= task.hours %> hours</p>
+          </div>
+          <%= link_to 'More details', task %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   devise_for :users
   resources :interests
   get 'tasks/:id/save', to: 'tasks#save', as: 'save'
+  resources :my_tasks
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
