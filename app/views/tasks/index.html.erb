@@ -1,4 +1,4 @@
-<h1 class="text-center">Volunteer Opportunities</h1>
+<h1 class="text-center m-5">Volunteer Opportunities</h1>
 
 <%# Search Form %>
 <%= form_with(scope: :search, url: tasks_path, method: 'get', local: true, class: "form-group form-row") do |f| %>
@@ -6,10 +6,8 @@
   <%= f.submit 'Search'%>
 <% end %>
 
-<%= form_with(scope: :search, url: tasks_path, method: 'get', local: true, class: "form-group form-row"
-) do |f| %>
+<%= form_with(scope: :search, url: tasks_path, method: 'get', local: true, class: "form-group form-row") do |f| %>
   <%= f.collection_select :skills, Skill.all, :id, :name, {}, { multiple: true,  class: "form-control col"} %>
-
   <%= f.submit 'Search' %>
 <% end %>
 

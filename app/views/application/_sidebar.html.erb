@@ -1,8 +1,8 @@
 <div class="sidebar-sticky min-vh-100">
   <nav class="nav flex-column">
     <% if user_signed_in? %>
-       <span class="navbar-brand">Welcome back, <%= current_user.username.capitalize %></span>
-    <ul class="nav flex-column text-secondary">
+       <h4 class="m-2">Welcome back, <%= current_user.username.capitalize %></h4>
+    <ul class="nav flex-column">
       <%= render 'navlinks' %>
     </ul>
   <% else %>

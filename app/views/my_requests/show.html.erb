@@ -1,8 +1,13 @@
-<h1>Interest in this task</h1>
+<h1 class="text-center m-5">Interest in this task</h1>
 
-<h4>The following people have expressed interest in participating in this task</h4>
-  <ul>
-    <% @found_people.each do |person| %>
-    <li><%= person.username %> - <%= person.email %></li>
-  <% end %>
-</ul>
+<% if @found_people.present? %>
+  <p>The following people have expressed interest in participating in this task</p>
+    <ul>
+      <% @found_people.each do |person| %>
+      <li><%= person.username %> - <%= person.email %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No-one has expressed interest in this request yet. Maybe update the listing?</p>
+   <%= link_to 'Update Listing', edit_task_path(@task), class: "btn btn-outline-secondary" %>
+<% end %>
