@@ -1,21 +1,28 @@
-<% @interests.each do |interest| %>
-  <div class="card mb-3" style="max-width: 900px;">
-    <div class="row no-gutters">
-      <div class="col-md-4">
-        <%= image_tag interest_image_for(interest), class: 'card-img' %>
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title"><%= interest.task.title %></h5>
-          <h5 class="card-title"><%= interest.task.summary %></h5>
-          <div class="date-time-containter">
-            <p class="card-text text-muted"><%= interest.task.date.to_formatted_s(:rfc822) %></p>
-            <p class="card-text text-muted"><%= interest.task.hours %> hours</p>
+<h1 class="text-center m-5">Expressions of Interest</h1>
+
+<% if @interests.present? %>
+  <% @interests.each do |interest| %>
+    <div class="card mb-3" style="max-width: 900px;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <%= image_tag interest_image_for(interest), class: 'card-img' %>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title"><%= interest.task.title %></h5>
+            <h5 class="card-title"><%= interest.task.summary %></h5>
+            <div class="date-time-containter">
+              <p class="card-text text-muted"><%= interest.task.date.to_formatted_s(:rfc822) %></p>
+              <p class="card-text text-muted"><%= interest.task.hours %> hours</p>
+            </div>
+            <%= link_to 'More details', interest.task %>
+            <%= link_to 'Delete from my list', interest, method: :delete, data: { confirm: 'Are you sure?' } %>
           </div>
-          <%= link_to 'More details', interest.task %>
-          <%= link_to 'Delete from my list', interest, method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
       </div>
     </div>
-  </div>
+  <% end %>
+<% else %>
+  <p>You have not signed up for any tasks yet. Let's add some!</p>
+  <%= link_to 'View all opportunities', tasks_path, class: "btn btn-secondary btn-sm m-2" %>
 <% end %>

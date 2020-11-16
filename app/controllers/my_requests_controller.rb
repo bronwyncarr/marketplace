@@ -12,18 +12,6 @@ class MyRequestsController < ApplicationController
         @found_people << this_user
     end
   end
-  
-  #     @found_people << item.user_id
-  #   end
-  #   @list = []
-  #   @found_people.each do |person|
-  #     @list << User.where(id: person)
-  #   end
-  #   @list
-  # end
-  
-# @found_people << User.where(id: item[user_id])
-
 
   private 
   def set_task

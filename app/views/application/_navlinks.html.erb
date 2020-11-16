@@ -2,5 +2,7 @@
 <%= link_to "My Expressions of Interest", interests_path, class: "nav-link text-dark" %>
 <%= link_to "My Created requests", my_requests_path, class: "nav-link text-dark" %>
 <%= link_to "Create a new request", new_task_path, class: "nav-link text-dark" %>
-<%= link_to "Manage Charities", destroy_user_session_path, method: :delete, class: "nav-link text-dark" %>
+<% if can? :manage, @charities %>
+  <%= link_to "Manage Charities", charities_path, class: "nav-link text-dark" %> 
+<% end %>
 <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link text-dark" %>
