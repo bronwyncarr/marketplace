@@ -5,7 +5,7 @@ module TasksHelper
     elsif task.charity.image.present?
       task.charity.image
     else
-      'food1.jpg'
+      'heart43.jpg'
     end
   end
 end
