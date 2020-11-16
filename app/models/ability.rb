@@ -9,9 +9,11 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.admin?
       can :manage, :all
-    else
-      can %i[index show new create save], Task
+    elsif user.organiser?
       can %i[edit update destroy], Task, user_id: user.id
+      can %i[index show save new create], Task
+    else
+      can %i[index show save], Task
     end
     #
     # The first argument to `can` is the action you are giving the user

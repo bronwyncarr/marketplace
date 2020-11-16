@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_16_011532) do
+ActiveRecord::Schema.define(version: 2020_11_16_060751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,15 @@ ActiveRecord::Schema.define(version: 2020_11_16_011532) do
     t.index ["user_id"], name: "index_interests_on_user_id"
   end
 
+  create_table "organisers", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "charity_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["charity_id"], name: "index_organisers_on_charity_id"
+    t.index ["user_id"], name: "index_organisers_on_user_id"
+  end
+
   create_table "required_skills", force: :cascade do |t|
     t.bigint "task_id", null: false
     t.bigint "skill_id", null: false
@@ -128,6 +137,8 @@ ActiveRecord::Schema.define(version: 2020_11_16_011532) do
   add_foreign_key "charities", "charity_kinds"
   add_foreign_key "interests", "tasks"
   add_foreign_key "interests", "users"
+  add_foreign_key "organisers", "charities"
+  add_foreign_key "organisers", "users"
   add_foreign_key "required_skills", "skills"
   add_foreign_key "required_skills", "tasks"
   add_foreign_key "tasks", "charities"

@@ -191,7 +191,7 @@ My database is centred around the `tasks` model. This represents a single reques
 
 #### Skills
 
-I wanted to be able to make a list of skills required for each task so charities could get targeted skills and volunteers could see if the task was suitable to them. These could include things like baking, carpentry, car license, working with children check etc. I created a `skills` table that had a unique id number as the foreign key and a name of the skill as an attribute. A task could require many skills and skills could be assigned to many tasks.
+I wanted to be able to make a list of skills required for each task so charities could get targeted skills and volunteers could see if the task was suitable to them. These could include things like baking, carpentry, car license, working with children check etc. I created a `skills` table that had a unique id number as the foreign key and a name of the skill as an attribute. A task could require many skills and skills could be assigned to many tasks. I elected to allow users to select these options on the form via checkboxes to preserve data integrity.
 
 I decided `tasks` and `skill`s had a **many-to-many** relationship so created a joining table called `task_skills` to connect them this. This table would contain the foreign key task_id and the foreign key skills_id to reference both. This means that:
 
