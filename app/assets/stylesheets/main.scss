@@ -3,3 +3,9 @@
 #mysidebar {
   background-color: rgb(213, 227, 233);
 }
+
+@media only screen and (max-width: 768px) {
+  #nav-link {
+    color: whitesmoke !important;
+  }
+}
