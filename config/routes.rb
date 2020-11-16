@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   root to: 'home#page'
+  devise_for :users
+  resources :roles
   resources :tasks
   resources :charities
-  devise_for :users
   resources :interests
   get 'tasks/:id/save', to: 'tasks#save', as: 'save'
   resources :my_requests
