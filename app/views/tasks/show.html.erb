@@ -23,7 +23,7 @@
   </div>    
   <div class="card-body">
     <p class="card-text"><%= @task.description %></p>
-    <p class="card-text"> Skills required: 
+    <p class="card-text"> Skills required: </p>
     <ul>
       <% @task.skills.each do |skill| %>
         <li><%= skill.name %></li>
