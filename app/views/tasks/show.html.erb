@@ -31,13 +31,16 @@
     </ul>
       <br>
 
-      <%# If the user is not the one who created the task and has not already expresssed interest - show button %>
-      <%# If the user is not the one who created the task and HAS expressed interest - thank them %>
-      <% if @task.user_id != current_user.id &&  Interest.find_by(task_id: @task.id, user_id: current_user.id) == nil %>
-        <%= link_to "I'm Interested", save_path, class: "btn btn-secondary btn-lg m-2" %>
-      <% elsif @task.user_id != current_user.id &&  Interest.find_by(task_id: @task.id, user_id: current_user.id).present? %>
-        <strong>Thanks for expressing your interest in this opportunity!</strong>
-        <br>
+      <%# If the user is not the one who created the task AND
+      <%# - has not already expresssed interest - show button OR
+      <%# - expressed interest - thank them %>
+      <% unless @task.user_id == current_user.id %>
+        <% if Interest.find_by(task_id: @task.id, user_id: current_user.id) == nil %>
+          <%= link_to "I'm Interested", save_path, class: "btn btn-secondary btn-lg m-2" %>
+        <% elsif Interest.find_by(task_id: @task.id, user_id: current_user.id).present? %>
+          <strong>Thanks for expressing your interest in this opportunity!</strong>
+          <br>
+        <% end %>
       <% end %>
       <br>
 
@@ -48,7 +51,7 @@
   <div class="card mb-3">
     <div class="card-body">
       <h5 class="card-title">About <%= @task.charity.name %>:</h5>
-      <p class="card-text"><%= @task.description %></p>
+      <p class="card-text"><%= @task.charity.description %></p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
