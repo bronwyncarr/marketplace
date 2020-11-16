@@ -15,8 +15,8 @@
               <p class="card-text text-muted"><%= interest.task.date.to_formatted_s(:rfc822) %></p>
               <p class="card-text text-muted"><%= interest.task.hours %> hours</p>
             </div>
-            <%= link_to 'More details', interest.task %>
-            <%= link_to 'Delete from my list', interest, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Details', interest.task, class: "btn btn-outline-secondary" %>
+            <%= link_to 'Delete from my list', interest, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-secondary"  %>
           </div>
         </div>
       </div>
