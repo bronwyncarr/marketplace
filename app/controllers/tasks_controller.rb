@@ -1,9 +1,6 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[show edit update destroy save]
-  before_action :authenticate_user!, except: [:index]
-
-  # cancancan roles
   load_and_authorize_resource
+  before_action :authenticate_user!, except: [:index]
 
   def index
     @tasks = if params[:search].present?
@@ -20,7 +17,6 @@ class TasksController < ApplicationController
   end
 
   def new
-    @task = Task.new
     @task.build_address
   end
 
@@ -60,12 +56,6 @@ class TasksController < ApplicationController
   end
 
   private
-
-  # Use callbacks to share common setup or constraints between actions.
-  def set_task
-    @task = Task.find(params[:id])
-  end
-
   def set_skills
     @requiredskills = RequiredSkill.find(params[:id])
   end

@@ -3,9 +3,9 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
   <div class="form-inputs">
     <%= f.input :title %>
-    <%= f.association :charity %>
+    <%= f.association :charity, collection: current_user.charities %>
     <%= f.simple_fields_for :address do |a| %>
-      <%= a.input :street_add, label: 'Street address', placeholder: '1/100 Main street' %>
+      <%= a.input :street_add, label: 'Street address' %>
       <%= a.input :suburb %>
       <%= a.input :state %>
       <%= a.input :country %>
@@ -14,11 +14,21 @@
     <%= f.input :description, as: :text %>
     <%= f.input :hours %>
     <%= f.input :date, order: [:day, :month, :year] %>
+    <br>
+    <%= f.label 'Upload an image:' %>
     <%= f.file_field :image, accept: "image/png, image/jpg, image/jpeg"%>
-    <%= f.collection_check_boxes :skill_ids, Skill.all, :id, :name %>
+    <br>
+    <br>
+    <%= f.label 'Skills required:' %>
+    <br>
+    <%= f.collection_check_boxes(:skill_ids, Skill.all.sort_by { |x| x.name }, :id, :name) do |s| %>
+    <%= s.label class: "label-checkbox", style:"padding-right:5px" do %>
+            <%= s.check_box + " " + s.text + " " %>
+    <% end %>
+<% end %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: "btn btn-secondary btn-lg m-2" %>
   </div>
 <% end %>

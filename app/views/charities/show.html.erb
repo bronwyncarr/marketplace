@@ -1,4 +1,12 @@
-<h1>Charities</h1>
+<h1 class="text-center m-5"><%= @charity.name %></h1>
+  
+<%= link_to '< Back', charities_path, class: "btn btn-outline-secondary btn-sm m-2" %>
+<% if can? :edit, @charity %>
+  <%= link_to 'Edit', charities_path, 'data-toggle' => "modal", 'data-target' => "#myModal", class: "btn show-btn btn-secondary btn-sm" %>
+  <%= render 'modal', modal: @charity %>
+  <%= link_to 'Delete', charity_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn show-btn btn-secondary btn-sm" %>
+<% end %>
+
 
 <p>
   <strong>Name:</strong>
@@ -16,11 +24,8 @@
 </p>
 
   <% if @charity.image.attached? %>
-    <%= image_tag @charity.image %>
+    <%= image_tag @charity.image, class: "img-fluid" %>
   <% end %>
-
-<%= link_to 'Back', charities_path %>
-<%= link_to 'Edit', charities_path, 'data-toggle' => "modal", 'data-target' => "#charityModal" %>
 
 <!-- Button trigger modal -->
 <%= render 'modal', modal: @charity %>

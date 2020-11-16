@@ -4,6 +4,10 @@ class Charity < ApplicationRecord
   validates :description, length: { maximum: 5000 }
 
   has_many :tasks, dependent: :destroy
+
+  has_many :organisers, dependent: :destroy
+  has_many :users, through: :organisers
+
   belongs_to :charity_kind
   has_one_attached :image
 end

@@ -1,24 +1,25 @@
-<h2>Charity list</h2>
-  <% if @charities %>
-    <% @charities.each do |charity| %>
-      <div class="card mb-3" style="max-width: 900px;">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <%= image_tag charity_image_for(charity), class: 'card-img'  %> 
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title"><%= charity.name %></h5>
-              <h5 class="card-title"><%= charity.charity_kind.name %></h5>
-              <%= link_to "Details", charity, class: "btn btn-secondary" %>
-            </div>
+<h1 class="text-center m-5">Charities Listed</h1>
+ <%= link_to "Create a new charity", new_charity_path, class: "btn btn-secondary btn-lg m-2"  %>
+<% if @charities %>
+  <% @charities.each do |charity| %>
+    <div class="card mb-3" style="max-width: 900px;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <%= image_tag charity_image_for(charity), class: 'card-img'  %> 
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title"><%= charity.name %></h5>
+            <p class="card-text"><%= charity.charity_kind.name %></p>
+            <%= link_to "Details", charity, class: "btn btn-outline-secondary" %>
           </div>
         </div>
       </div>
-    <% end %>
-  <% else %>
-    <h4>There are no charities registered yet.</h4>
+    </div>
   <% end %>
+<% else %>
+  <h4>There are no charities registered yet.</h4>
+<% end %>
 
 
   

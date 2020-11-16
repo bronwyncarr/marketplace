@@ -22,8 +22,8 @@
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title"><%= task.title %></h5>
-          <h5 class="card-title"><%= task.summary %></h5>
-          <h5 class="card-title"><%= task.address.street_add %>, <%= task.address.suburb %>, <%= task.address.state %></h5>
+          <p class="card-text"><%= task.summary %></p>
+          <p class="card-text"><%= task.address.street_add %>, <%= task.address.suburb.capitalize %>, <%= task.address.state.capitalize %></p>
           <% task.skills.each do |skill| %>
             <%= skill.name %>
           <% end %>
@@ -31,7 +31,7 @@
             <p class="card-text text-muted"><%= task.date.to_formatted_s(:rfc822) %></p>
             <p class="card-text text-muted"><%= task.hours %> hours</p>
           </div>
-          <%= link_to 'More details', task %>
+          <%= link_to 'Tell me more!', task, class: "btn btn-outline-secondary" %>
         </div>
       </div>
     </div>
