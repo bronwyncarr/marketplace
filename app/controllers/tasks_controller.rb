@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   load_and_authorize_resource
 
+  #search of title, skills or display all
   def index
     @tasks = if params[:search].present?
                Task.search_by(search_params)
@@ -24,7 +25,7 @@ class TasksController < ApplicationController
   def create
     @task = current_user.tasks.new(task_params)
     if @task.save
-      redirect_to @task, notice: 'Task was successfully created.'
+      redirect_to @task, notice: 'Request was successfully created.'
     else
       render :new
     end
@@ -32,7 +33,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to @task, notice: 'Task was successfully updated.'
+      redirect_to @task, notice: 'Request was successfully updated.'
     else
       render :edit
     end
@@ -40,7 +41,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to tasks_url, notice: 'Task was successfully destroyed.'
+    redirect_to tasks_url, notice: 'Request was successfully destroyed.'
   end
 
   # Saves task to current users interests list and send email
@@ -55,10 +56,6 @@ class TasksController < ApplicationController
   end
 
   private
-  def set_skills
-    @requiredskills = RequiredSkill.find(params[:id])
-  end
-
   # Search parameters allowed through
   def search_params
     params.require(:search).permit(:title, skills: [])

@@ -54,6 +54,10 @@ count = 0
   Address.create street_add: street_add, suburb: suburb, state: state, country: country, task_id: task_id
 end  
 
+5.times do
+  name = Faker::Lorem.word
+  Skill.create name: name
+end  
 
 50.times do
   task_id = rand(1..10)
@@ -61,9 +65,5 @@ end
   RequiredSkill.create task_id: task_id, skill_id: skill_id
 end  
 
-5.times do
-  name = Faker::Lorem.word
-  Skill.create name: name
-end  
 
 

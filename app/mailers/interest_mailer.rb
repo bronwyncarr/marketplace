@@ -5,6 +5,6 @@ class InterestMailer < ApplicationMailer
     @user = user
     @interest = interest
     mail(to: @user.email,
-      subject: 'Thanks for signing up to make a difference!')
+         subject: 'Thanks for signing up to make a difference!')
   end
 end

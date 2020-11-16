@@ -3,18 +3,17 @@ class InterestsController < ApplicationController
   before_action :interests_by_user, only: :index
 
   def index
-    @interests = Interest.all.where(user_id: current_user[:id])
   end
 
   def destroy
     @interest.destroy
-    redirect_to interests_url, notice: 'interest was successfully destroyed.'
+    redirect_to interests_url, notice: 'Your interest in this opportunity will no longer be recorded.'
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
+  # Show interests applicable to the user
   def interests_by_user
-    @interests = Interest.where(user: current_user[:id])
+    @interests = Interest.where(user: current_user)
   end
 
   def set_interest

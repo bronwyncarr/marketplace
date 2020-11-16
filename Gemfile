@@ -39,9 +39,9 @@ gem 'validates_timeliness', '~> 5.0.0.beta1'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'debase', '0.2.4.1'
   gem 'rubocop-rails', require: false
   gem 'ruby-debug-ide', '0.7.2'
-  gem 'debase', '0.2.4.1'
 end
 
 group :development do

@@ -1,4 +1,5 @@
 module InterestsHelper
+  # shows task image if they have one, otherwise, charity general, otherwise default
   def interest_image_for(interest)
     if interest.task.image.present?
       interest.task.image

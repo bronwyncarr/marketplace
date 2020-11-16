@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :timeoutable
 
   # # Allows users to create a task
-  has_many :tasks
+  has_many :tasks, dependent: :destroy
 
   has_many :organisers, dependent: :destroy
   has_many :charities, through: :organisers
@@ -18,9 +18,7 @@ class User < ApplicationRecord
   before_save :assign_role
 
   def assign_role
-    if role.nil?
-      self.role = Role.find_by name: 'general'
-    end
+    self.role = Role.find_by name: 'general' if role.nil?
   end
 
   def admin?
@@ -34,5 +32,4 @@ class User < ApplicationRecord
   def general?
     role.name == 'general'
   end
-
 end

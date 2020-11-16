@@ -7,8 +7,7 @@ class CharitiesController < ApplicationController
 
   def show; end
 
-  def new
-  end
+  def new; end
 
   def edit; end
 
@@ -34,6 +33,7 @@ class CharitiesController < ApplicationController
   end
 
   private
+
   def charity_params
     params.require(:charity).permit :name, :description, :charity_kind_id, :image
   end

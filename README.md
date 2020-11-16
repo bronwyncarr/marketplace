@@ -130,7 +130,6 @@ Teck stack used for this project is:
 
 #### Guest
 
-- As a guest I want to see a bit about the app and opportunites listed before I have to sign up so that I can see if I'm interested.
 - As a guest I want an easy sign up process so that I can use the app further.
 
 #### Volunteer
