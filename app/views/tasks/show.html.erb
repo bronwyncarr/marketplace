@@ -7,14 +7,13 @@
   <%= link_to 'Delete', task_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn show-btn btn-secondary btn-sm" %>
 <% end %>
 
-
 <div class="card mb-3 m-2">
   <div class="row">
     <div class="col-md-4">
-      <%= image_tag image_for(@task), class: 'card-img' %>
+      <%= image_tag image_for(@task), class: 'card-img m-2' %>
     </div>
     <div class="col-md-8">
-      <h5 class="card-title"><%= @task.charity.name %></h5>
+      <h5 class="card-title m-2"><%= @task.charity.name %></h5>
       <h5 class="card-title"><%= @task.date.to_formatted_s(:rfc822)  %></h5>
       <p class="card-text"><%= @task.summary %></p>
       <p class="card-text"><%= @task.address.street_add %>, <%= @task.address.suburb.capitalize %>, <%= @task.address.state.capitalize %></p>
@@ -22,6 +21,7 @@
     </div>
   </div>    
   <div class="card-body">
+    <strong>About the request:</strong>
     <p class="card-text"><%= @task.description %></p>
     <p class="card-text"> Skills required: </p>
     <ul>
@@ -30,10 +30,18 @@
       <% end %>
     </ul>
       <br>
-      <% if @task.user_id != current_user.id %>
+
+      <%# If the user is not the one who created the task and has not already expresssed interest - show button %>
+      <%# If the user is not the one who created the task and HAS expressed interest - thank them %>
+      <% if @task.user_id != current_user.id &&  Interest.find_by(task_id: @task.id, user_id: current_user.id) == nil %>
         <%= link_to "I'm Interested", save_path, class: "btn btn-secondary btn-lg m-2" %>
+      <% elsif @task.user_id != current_user.id &&  Interest.find_by(task_id: @task.id, user_id: current_user.id).present? %>
+        <strong>Thanks for expressing your interest in this opportunity!</strong>
+        <br>
       <% end %>
       <br>
+
+      <%# Map %>
       <div style="height: 400px" id="map"></div>
     </div>
   </div>
