@@ -1,5 +1,5 @@
 class MyRequestsController < ApplicationController
-  before_action :set_task, only: %i[show edit update destroy save]
+  before_action :set_task, only: :show
   
   def index
     @tasks = Task.where(user_id: current_user)

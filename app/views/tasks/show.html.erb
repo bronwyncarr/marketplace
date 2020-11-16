@@ -2,7 +2,7 @@
   
 <%= link_to '< Back', tasks_path, class: "btn btn-outline-secondary btn-sm m-2" %>
 <% if can? :edit, @task %>
-  <%= link_to 'Edit', tasks_path, 'data-toggle' => "modal", 'data-target' => "#charityModal", class: "btn show-btn btn-secondary btn-sm" %>
+  <%= link_to 'Edit', tasks_path, 'data-toggle' => "modal", 'data-target' => "#myModal", class: "btn show-btn btn-secondary btn-sm" %>
   <%= render 'modal', modal: @task %>
   <%= link_to 'Delete', task_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn show-btn btn-secondary btn-sm" %>
 <% end %>

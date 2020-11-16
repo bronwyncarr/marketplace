@@ -1,12 +1,10 @@
 class InterestsController < ApplicationController
-  before_action :set_interest, only: %i[show destroy]
+  before_action :set_interest, only: :destroy
   before_action :interests_by_user, only: :index
 
   def index
     @interests = Interest.all.where(user_id: current_user[:id])
   end
-
-  def show; end
 
   def destroy
     @interest.destroy
@@ -14,7 +12,6 @@ class InterestsController < ApplicationController
   end
 
   private
-
   # Use callbacks to share common setup or constraints between actions.
   def interests_by_user
     @interests = Interest.where(user: current_user[:id])
