@@ -26,6 +26,8 @@ Github - <https://github.com/bronwyncarr/marketplace>
 
 Heroku - <https://volunteer-marketplace.herokuapp.com/>
 
+Slide Deck - <https://docs.google.com/presentation/d/1zumTJ2SNfjI9uJmrjzWBylWqo9JzHq-ScXSFPZug9mo/edit?usp=sharing>
+
 Trello - <https://trello.com/b/KXzaMOYT/marketplace-app>
 
 ## R7 Identification of the problem you are trying to solve by building this particular marketplace app.
@@ -37,7 +39,7 @@ Volunteers are relied upon to provide many services and functions critical to Au
 - No one asked – 45%
 - Did not know how to become involved – 22%
 
-Due to barriers, the amount of people volunteering in our community is decreasing. This problem affects small charities that rely 100% of volunteers in addition to larger ones that still have a large volunteer workforce.
+Due to barriers, the percentage of people volunteering in our community is decreasing. This problem affects small charities that rely 100% of volunteers in addition to larger ones that still have a large volunteer workforce.
 
 ## R8 Why is it a problem that needs solving
 
