@@ -12,6 +12,7 @@ class Ability
     elsif user.organiser?
       can %i[edit update destroy], Task, user_id: user.id
       can %i[index show save new create], Task
+      can %i[index show new create], Charity
     else
       can %i[index show save], Task
     end

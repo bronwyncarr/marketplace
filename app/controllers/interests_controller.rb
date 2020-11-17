@@ -13,8 +13,8 @@ class InterestsController < ApplicationController
   private
   # Show interests applicable to the user
   def interests_by_user
-    @old_interests = Interest.previous.where(user: current_user).includes(:task => [image_attachment: :blob], :task => [:charity, :charity => [image_attachment: :blob]])
-    @new_interests = Interest.current.where(user: current_user).includes(:task => [image_attachment: :blob], :task => [:charity, :charity => [image_attachment: :blob]])
+    @old_interests = Interest.previous.where(user: current_user).includes(:task => [image_attachment: :blob], :task => [:charity])
+    @new_interests = Interest.current.where(user: current_user).includes(:task => [image_attachment: :blob], :task => [:charity])
   end
 
   def set_interest
