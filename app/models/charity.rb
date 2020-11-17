@@ -8,6 +8,8 @@ class Charity < ApplicationRecord
   has_many :organisers, dependent: :destroy
   has_many :users, through: :organisers
 
+  accepts_nested_attributes_for :organisers
+
   belongs_to :charity_kind
   has_one_attached :image
 end

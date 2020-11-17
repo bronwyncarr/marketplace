@@ -12,30 +12,6 @@
 <% end %>
 
 <%# Display each task in a horizontal card  %>
-<% @sorted_tasks = @tasks.sort_by { |n| n[:date]} %>
-<% @sorted_tasks.each do |task| %>
-  <div class="card mb-3" style="max-width: 900px;">
-    <div class="row no-gutters">
-      <div class="col-md-4">
-        <%= image_tag image_for(task), class: 'card-img' %>
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title"><%= task.title %></h5>
-          <p class="card-text"><%= task.summary %></p>
-          <p class="card-text"><%= task.address.street_add %>, <%= task.address.suburb.capitalize %>, <%= task.address.state.capitalize %></p>
-          <% task.skills.each do |skill| %>
-            <%= skill.name %>
-          <% end %>
-          <div class="date-time-containter">
-            <p class="card-text text-muted"><%= task.date.to_formatted_s(:rfc822) %></p>
-            <p class="card-text text-muted"><%= task.hours %> hours</p>
-          </div>
-          <%= link_to 'Tell me more!', task, class: "btn btn-outline-secondary" %>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
+<%= render 'card_display', to_display: @tasks %>
 
  
