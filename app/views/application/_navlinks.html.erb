@@ -1,7 +1,7 @@
 <%= link_to "Find a new opportunity", tasks_path, class: "nav-link text-dark", id: "nav-link" %>
 <%= link_to "My Expressions of Interest", interests_path, class: "nav-link text-dark", id: "nav-link" %>
 <%= link_to "Charities/Community Groups", charities_path, class: "nav-link text-dark", id: "nav-link" %>
-<% if can? :new, Task %>
+<% if can? :create, Task %>
   <br>
   <%= link_to "My Requests", my_requests_path, class: "nav-link text-dark", id: "nav-link" %>
   <%= link_to "New Request", new_task_path, class: "nav-link text-dark", id: "nav-link" %>

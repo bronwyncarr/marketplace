@@ -1,7 +1,9 @@
-<h1 class="text-center m-5">My Requests</h1>
+<h1 class="text-center m-5">Requests</h1>
+<p class="text m-2">All requests made by the charities you are involved with.</p>
+<p class="text m-2">You can edit or delete any you were the author of by selecting 'Details'.</p>
 
 <% if @new_tasks.present? %>
-  <h2 class="text-center">Upcoming</h1>
+  <h2 class="text-center m-3">Upcoming</h2>
   <%= render 'request_table', tasks_to_list: @new_tasks %>
 <% elsif %>
   <p>You haven't listed any requests for assistance. Let's asdd some!</p>
@@ -10,6 +12,6 @@
 
 
 <% if @old_tasks.present? %>
-  <h2 class="text-center">Previous</h1>
+  <h2 class="text-center m-3">Previous</h2>
   <%= render 'request_table', tasks_to_list: @old_tasks %>
 <% end %>

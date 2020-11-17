@@ -1,5 +1,10 @@
 <h1 class="text-center m-5">Charities + Community Groups</h1>
- <%= link_to "Register Your Organisation", new_charity_path, class: "btn btn-secondary btn-lg m-2"  %>
+<% if can? :create, Charity %>
+  <%= link_to "Add Your Organisation", new_charity_path, class: "btn btn-secondary btn-lg m-2"  %>
+<% else %>
+  <p>Want to register an organisation or your involvement with one? Contact us!</p>
+<% end %>
+
 <% if @charities %>
   <% @charities.each do |charity| %>
     <div class="card mb-3" style="max-width: 900px;">

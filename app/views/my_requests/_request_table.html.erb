@@ -10,8 +10,8 @@
     </tr>
   </thead>
   <tbody>
-
-    <% sorted_tasks = tasks_to_list.sort_by { |d| d.date }%>
+<% tasks_to_list.each do |sorted_tasks| %>
+    <%# <% sorted_tasks = tasks_to_list.sort_by { |d| d.date }%> 
     <% sorted_tasks.each do |task| %>
       <tr>
         <td><%= task.date.to_formatted_s(:rfc822) %></td>
@@ -29,5 +29,6 @@
         <td><%= link_to 'Details', task %></td>
       </tr>
     <% end %>
+<% end %>
   </tbody>
 </table>
