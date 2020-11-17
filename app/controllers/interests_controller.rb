@@ -11,7 +11,8 @@ class InterestsController < ApplicationController
   end
 
   private
-  # Show interests applicable to the user
+  # Find tasks the user has expressed interest in.
+  # Uses scope 'previous' and 'current' to divide based on whether the date is in the future or past.
   def interests_by_user
     @old_interests = Interest.previous.where(user: current_user).includes(:task => [image_attachment: :blob], :task => [:charity])
     @new_interests = Interest.current.where(user: current_user).includes(:task => [image_attachment: :blob], :task => [:charity])

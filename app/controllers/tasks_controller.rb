@@ -1,10 +1,11 @@
 class TasksController < ApplicationController
+  # Will set_task and load appropriate resources
   load_and_authorize_resource
 
-  #search of title, skills or display all
+  # Search by title, skills otherwise display all
   def index
     @tasks = if params[:search].present?
-               Task.search_by(search_params)
+               Task.current.search_by(search_params)
              else
                Task.current.includes([:skills, :required_skills, :address, :charity => [image_attachment: :blob], image_attachment: :blob])
              end
@@ -16,6 +17,7 @@ class TasksController < ApplicationController
     end
   end
 
+  # load_and_authorise_resources does @tasdk.new but still specify to build address
   def new
     @task.build_address
   end
@@ -44,7 +46,8 @@ class TasksController < ApplicationController
     redirect_to tasks_url, notice: 'Request was successfully deleted.'
   end
 
-  # Saves task to current users interests list and send email
+  # Saves task to current users interests list
+  # Sends an email to user notifying them that their contact email is available to the charity
   def save
     @interest = current_user.interests.new(task_id: params[:id])
     if @interest.save
