@@ -4,7 +4,6 @@
 <% else %>
   <p>Want to register an organisation or your involvement with one? Contact us!</p>
 <% end %>
-
 <% if @charities %>
   <% @charities.each do |charity| %>
     <div class="card mb-3" style="max-width: 900px;">
@@ -15,7 +14,7 @@
         <div class="col-md-8">
           <div class="card-body">
             <h5 class="card-title"><%= charity.name %></h5>
-            <p class="card-text"><%= charity.charity_kind.name %></p>
+            <p class="card-text">Category: <%= charity.charity_kind.name %></p>
             <%= link_to "Details", charity, class: "btn btn-outline-secondary" %>
           </div>
         </div>

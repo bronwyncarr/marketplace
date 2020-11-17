@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   # Search by title, skills otherwise display all
   def index
     @tasks = if params[:search].present?
-               Task.current.search_by(search_params)
+               Task.current.search_by(search_params).includes([:skills, :required_skills, :address, :charity => [image_attachment: :blob], image_attachment: :blob])
              else
                Task.current.includes([:skills, :required_skills, :address, :charity => [image_attachment: :blob], image_attachment: :blob])
              end

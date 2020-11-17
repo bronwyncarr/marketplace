@@ -11,7 +11,7 @@ class Ability
       can :manage, :all
     elsif user.organiser?
       # User can edit and delete tasks only they created.
-      # they can view all tasks that charitites they are associated with have and the interst in them.
+      # They can view all tasks that charitites they are associated with have and the interst in them.
       can %i[edit update destroy], Task, user_id: user.id
       can %i[index show save new create], Task
       can %i[index show new create], Charity
