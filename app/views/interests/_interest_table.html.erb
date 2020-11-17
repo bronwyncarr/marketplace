@@ -1,0 +1,23 @@
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>Date</th>
+      <th>Title</th>
+      <th>Hours</th>
+      <th>Charity</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% sorted_interests = interests_to_list.sort_by { |d| d.task.date }%>
+    <% sorted_interests.each do |i| %>
+      <tr>
+        <td><%= i.task.date.to_formatted_s(:rfc822) %></td>
+        <td><%= i.task.title %></td>
+        <td><%= i.task.hours %></td>
+        <td><%= i.task.charity.name %></td>
+        <td><%= link_to 'Details', task_path(i.task) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

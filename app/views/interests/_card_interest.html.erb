@@ -1,0 +1,22 @@
+<% @sorted_interest = to_display.sort_by { |n| n[:date]} %>
+<% @sorted_interest.each do |interest| %>
+  <div class="card mb-3" style="max-width: 900px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <%= image_tag interest_image_for(interest), class: 'card-img' %>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><%= interest.task.title %></h5>
+          <h5 class="card-title"><%= interest.task.summary %></h5>
+          <div class="date-time-containter">
+            <p class="card-text text-muted"><%= interest.task.date.to_formatted_s(:rfc822) %></p>
+            <p class="card-text text-muted"><%= interest.task.hours %> hours</p>
+          </div>
+          <%= link_to 'Details', interest.task, class: "btn btn-outline-secondary" %>
+          <%= link_to 'Delete from my list', interest, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-secondary"  %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
