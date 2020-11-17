@@ -23,7 +23,8 @@ class Task < ApplicationRecord
   accepts_nested_attributes_for :address
 
   # Seperate upcoming and past dates
-  # scope :current, -> (date) { :date >= Date.current }
+  scope :current, -> { where("date >= ?", Date.current) }
+  scope :previous, -> { where("date <= ?", Date.current) }
 
   # Allows users to add an image
   has_one_attached :image

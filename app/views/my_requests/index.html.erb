@@ -1,41 +1,15 @@
 <h1 class="text-center m-5">My Requests</h1>
 
-<% if @tasks.present? %>
-  <table class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th>Date</th>
-        <th>Title</th>
-        <th>Hours</th>
-        <th>Charity</th>
-        <th>Image?</th>
-        <th colspan="4"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% sorted_tasks = @tasks.sort_by { |d| d.date }%>
-      <% sorted_tasks.each do |task| %>
-        <tr>
-          <td><%= task.date.to_formatted_s(:rfc822) %></td>
-          <td><%= task.title %></td>
-          <td><%= task.hours %></td>
-          <td><%= task.charity.name %></td>
-          <td>
-            <% if task.image.attached? %>
-              Yes
-            <% else %>
-              No
-            <% end %>
-          </td>
-          <td><%= link_to 'Interest', my_request_path(task) %></td>
-          <td><%= link_to 'Details', task %></td>
-          <td><%= link_to 'Edit', edit_task_path(task), class: "d-none d-lg-block" %></td>
-          <td><%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' }, class: "d-none d-lg-block" %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<% if @new_tasks.present? %>
+  <h2 class="text-center">Upcoming</h1>
+  <%= render 'request_table', tasks_to_list: @new_tasks %>
 <% elsif %>
   <p>You haven't listed any requests for assistance. Let's asdd some!</p>
   <%= link_to 'Create a new request', new_task_path, class: "btn btn-secondary btn-sm m-2" %>
+<% end %>
+
+
+<% if @old_tasks.present? %>
+  <h2 class="text-center">Previous</h1>
+  <%= render 'request_table', tasks_to_list: @old_tasks %>
 <% end %>

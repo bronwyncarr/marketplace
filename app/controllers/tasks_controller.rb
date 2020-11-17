@@ -6,7 +6,7 @@ class TasksController < ApplicationController
     @tasks = if params[:search].present?
                Task.search_by(search_params)
              else
-               Task.all.includes([:skills, :required_skills, :address, :charity => [image_attachment: :blob], image_attachment: :blob])
+               Task.current.includes([:skills, :required_skills, :address, :charity => [image_attachment: :blob], image_attachment: :blob])
              end
   end
 

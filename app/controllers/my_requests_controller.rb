@@ -3,7 +3,8 @@ class MyRequestsController < ApplicationController
 
   def index
      # Show requests made by the current user
-    @tasks = Task.where(user_id: current_user).includes([:charity, image_attachment: :blob])
+    @new_tasks = Task.current.where(user_id: current_user).includes([:charity, image_attachment: :blob])
+    @old_tasks = Task.previous.where(user_id: current_user).includes([:charity, image_attachment: :blob])
   end
 
   def show

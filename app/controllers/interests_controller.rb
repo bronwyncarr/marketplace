@@ -13,7 +13,7 @@ class InterestsController < ApplicationController
   private
   # Show interests applicable to the user
   def interests_by_user
-    @interests = Interest.where(user: current_user)
+    @interests = Interest.where(user: current_user).includes([:task])
   end
 
   def set_interest
