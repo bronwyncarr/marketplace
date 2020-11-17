@@ -7,25 +7,15 @@
   <%= link_to 'Delete', charity_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn show-btn btn-secondary btn-sm" %>
 <% end %>
 
-
-<p>
-  <strong>Name:</strong>
-  <%= @charity.name %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @charity.charity_kind.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @charity.description %>
-</p>
-
-  <% if @charity.image.attached? %>
-    <%= image_tag @charity.image, class: "img-fluid" %>
-  <% end %>
-
+<div class="row">
+    <div class="col-md-4">
+      <%= image_tag charity_image_for(@charity), class: 'card-img m-2' %>
+    </div>
+    <div class="col-md-8">
+      <p>
+        <strong>Description:</strong>
+        <%= @charity.description %>
+      </p>
+      
 <!-- Button trigger modal -->
 <%= render 'modal', modal: @charity %>

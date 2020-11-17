@@ -14,12 +14,12 @@ class InterestsController < ApplicationController
   # Find tasks the user has expressed interest in.
   # Uses scope 'previous' and 'current' to divide based on whether the date is in the future or past.
   def interests_by_user
-    @old_interests = Interest.previous.where(user: current_user).includes(:task => [image_attachment: :blob], :task => [:charity])
-    @new_interests = Interest.current.where(user: current_user).includes(:task => [image_attachment: :blob], :task => [:charity])
+    @old_interests = Interest.previous.where(user: current_user).includes(:task => [image_attachment: :blob], :task => [:charity], :task => [:address])
+    @new_interests = Interest.current.where(user: current_user).includes(:task => [image_attachment: :blob], :task => [:charity], :task => [:address])
   end
 
   def set_interest
-    @interest = Interest.find(params[:id])
+    @interest = Interest.find(params[:id]).includes(:task => [image_attachment: :blob], :task => [:charity], :task => [:address])
   end
 
   # Only allow a list of trusted parameters through.
