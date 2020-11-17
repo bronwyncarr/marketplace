@@ -2,7 +2,7 @@ class CharitiesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @charities = Charity.all
+    @charities = Charity.all.includes([:charity_kind, image_attachment: :blob])
   end
 
   def show; end

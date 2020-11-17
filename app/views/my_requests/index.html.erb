@@ -8,7 +8,7 @@
         <th>Title</th>
         <th>Hours</th>
         <th>Charity</th>
-        <th>Image attached?</th>
+        <th>Image?</th>
         <th colspan="4"></th>
       </tr>
     </thead>
@@ -28,7 +28,7 @@
             <% end %>
           </td>
           <td><%= link_to 'Interest', my_request_path(task) %></td>
-          <td><%= link_to 'Show', task %></td>
+          <td><%= link_to 'Details', task %></td>
           <td><%= link_to 'Edit', edit_task_path(task), class: "d-none d-lg-block" %></td>
           <td><%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' }, class: "d-none d-lg-block" %></td>
         </tr>

@@ -42,6 +42,7 @@ group :development, :test do
   gem 'debase', '0.2.4.1'
   gem 'rubocop-rails', require: false
   gem 'ruby-debug-ide', '0.7.2'
+  gem 'bullet'
 end
 
 group :development do
