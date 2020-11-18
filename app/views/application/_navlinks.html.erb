@@ -6,7 +6,7 @@
   <%= link_to "Requests", my_requests_path, class: "nav-link text-dark", id: "nav-link" %>
   <%= link_to "New Request", new_task_path, class: "nav-link text-dark", id: "nav-link" %>
 <% end %>
-<% if can? :manage, Charity %>
+<% if can? :manage, :all %>
   <br>
   <%= link_to "Admin Dashboard", "admin", class: "nav-link text-dark" %> 
 <% end %>

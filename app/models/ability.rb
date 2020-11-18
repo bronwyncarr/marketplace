@@ -21,7 +21,7 @@ class Ability
       # General users can only see tasks and save them to their Interests list
       # General user can add a charity and it will be associated with them but they need to be 'upgraded'
       # by admin to organiser before they can make changes and create posts.
-      can %i[index show], Charity
+      can %i[index show new create], Charity
       can %i[index show save], Task
     end
     #
