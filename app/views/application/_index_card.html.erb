@@ -1,0 +1,27 @@
+ <%# Card is used for both tasks index and upcoming interests index  %>
+<div class="card mb-3" style="max-width: 900px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <%= image_tag image_for(task), class: 'card-img' %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <div class="d-md-flex justify-content-between">
+          <h5 class="card-title"><%= task.title %></h5>
+          <p class="card-text text-muted"><%= task.date.to_formatted_s(:rfc822) %></p>
+        </div>
+        <h5 class="card-title"><%= task.charity.name %></h5>
+        <p class="card-text"><%= task.summary %></p>
+        <p class="card-text"><%= task.address.street_add %>, <%= task.address.suburb.capitalize %>, <%= task.address.state.capitalize %></p>
+        <div class="d-md-flex justify-content-between">
+        <p class="card-text">Skills:<% task.skills.each do |skill| %>
+            <%= skill.name %>,
+          <% end %>
+        </p>
+          <p class="card-text text-muted"><%= task.hours %> hours</p>
+        </div>
+        <%= link_to 'Tell me more!', task, class: "btn btn-outline-secondary" %>
+      </div>
+    </div>
+  </div>
+</div>

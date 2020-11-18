@@ -1,7 +1,10 @@
 <h1 class="text-center m-5">Expressions of Interest</h1>
 <h2 class="text-center">Upcoming</h1>
 <% if @new_interests.present? %>
-  <%= render 'card_interest', to_display: @new_interests %>
+  <% @sorted_interest = @new_interests.sort_by { |n| n[:date]} %>
+  <% @sorted_interest.each do |i| %>
+    <%= render 'index_card', task: i.task %>
+  <% end %>
 <% else %>
   <p>You have not signed up for any tasks yet. Let's add some!</p>
   <%= link_to 'View all opportunities', tasks_path, class: "btn btn-secondary btn-sm m-2" %>

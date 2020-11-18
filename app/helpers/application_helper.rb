@@ -8,7 +8,7 @@ module ApplicationHelper
     end
   end
 
-  # Shows task image if they have one, otherwise, charity general, otherwise default
+  # Shows task image if they have one, otherwise charity image, otherwise default
   # used in both task index and interest index
   def image_for(task)
     if task.image.present?

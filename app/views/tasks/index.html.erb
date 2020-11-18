@@ -12,6 +12,9 @@
 <% end %>
 
 <%# Display each task in a horizontal card  %>
-<%= render 'card_display', to_display: @tasks %>
+<% @sorted_tasks = @tasks.sort_by { |n| n[:date]} %>
+<% @sorted_tasks.each do |task| %>
+  <%= render 'index_card', task: task %>
+<% end %>
 
  
