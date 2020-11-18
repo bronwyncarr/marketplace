@@ -31,16 +31,14 @@
     </ul>
       <br>
 
-      <%# If the user is not the one who created the task AND
-      <%# - has not already expresssed interest - show button OR
-      <%# - expressed interest - thank them %>
-      <% unless @task.user_id == current_user.id %>
-        <% if Interest.find_by(task_id: @task.id, user_id: current_user.id) == nil %>
-          <%= link_to "I'm Interested", save_path, class: "btn btn-secondary btn-lg m-2" %>
-        <% elsif Interest.find_by(task_id: @task.id, user_id: current_user.id).present? %>
-          <strong>Thanks for expressing your interest in this opportunity!</strong>
-          <br>
-        <% end %>
+     <%# - If they have expressed interest - thank them OR  %>
+      <%# If they have not already expresssed interest - show button %>
+  
+      <% if Interest.find_by(task_id: @task.id, user_id: current_user.id).present? %>
+        <strong>Thanks for expressing your interest in this opportunity!</strong>
+        <br>
+      <% else %>
+        <%= link_to "I'm Interested", save_path, class: "btn btn-secondary btn-lg m-2" %>
       <% end %>
       <br>
 

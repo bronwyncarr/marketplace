@@ -34,6 +34,6 @@ class Task < ApplicationRecord
   scope :previous, -> { where("date < ?", Date.current) }
 
   # Scope for searching
-  scope :search_by_title, ->(title) { where('title ILIKE ?', "%#{title}%") }
-  scope :search_by_skills, ->(skill_ids) { joins(:skills).merge(Skill.where(id: skill_ids)) }
+  scope :search_by_title, -> (title) { where('title ILIKE ?', "%#{title}%") }
+  scope :search_by_skills, -> (skill_ids) { joins(:skills).merge(Skill.where(id: skill_ids)) }
 end

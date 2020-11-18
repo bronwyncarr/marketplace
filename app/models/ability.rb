@@ -8,15 +8,18 @@ class Ability
     #
     user ||= User.new # guest user (not logged in)
     if user.admin?
+      # Admin can manage all and are responsible for upgradeing general users to organiser.
       can :manage, :all
     elsif user.organiser?
-      # User can edit and delete tasks only they created.
-      # They can view all tasks that charitites they are associated with have and the interst in them.
-      can %i[edit update destroy], Task, user_id: user.id
-      can %i[index show save new create], Task
-      can %i[index show new create], Charity
+      # User must be approved as an organiser and associated with a charity (organisers table) by admin
+      # Once approved they can manage the charity they are associated.
+      # Everyone who is an organiser can manage the charity and posts of that charity
+      can :manage, Task, charity_id: user.charities.ids
+      can :manage, Charity, id: user.charities.ids
     else
-      # General users can only see tasks and save them to their 
+      # General users can only see tasks and save them to their Interests list
+      # General user can add a charity and it will be associated with them but they need to be 'upgraded'
+      # by admin to organiser before they can make changes and create posts.
       can %i[index show], Charity
       can %i[index show save], Task
     end
