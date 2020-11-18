@@ -25,7 +25,7 @@ class TasksController < ApplicationController
   def edit; end
 
   def create
-    @task = current_user.tasks.new(task_params)
+    @task = Task.new(task_params)
     if @task.save
       redirect_to @task, notice: 'Request was successfully created.'
     else

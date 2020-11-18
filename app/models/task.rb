@@ -6,10 +6,7 @@ class Task < ApplicationRecord
   validates :summary, length: { in: 10..1000 }
   validates :description, length: { maximum: 5000 }
   validates :hours, numericality: { less_than: 24 }
-  # validates_date :date, on_or_after: -> { Date.current }
-
-  # # Allows users to create a task
-  belongs_to :user
+  validates_date :date, on_or_after: -> { Date.current }
 
   # Allows users to sign up for many tasks as an EOI
   has_many :interests, dependent: :destroy

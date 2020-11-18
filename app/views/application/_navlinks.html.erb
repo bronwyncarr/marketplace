@@ -1,14 +1,30 @@
-<%= link_to "Find a new opportunity", tasks_path, class: "nav-link text-dark", id: "nav-link" %>
-<%= link_to "My Expressions of Interest", interests_path, class: "nav-link text-dark", id: "nav-link" %>
-<%= link_to "Charities/Community Groups", charities_path, class: "nav-link text-dark", id: "nav-link" %>
+<div class="d-flex flex-row align-items-center", id="nav-link">
+  <i class="fa fa-search"></i>
+  <%= link_to "Search opportunities", tasks_path, class: "nav-link text-dark", id: "nav-link"%>
+</div>
+<div class="d-flex flex-row align-items-center", id="nav-link">
+  <i class="fa fa-hand-paper-o"></i>
+  <%= link_to "Expressions of Interest", interests_path, class: "nav-link text-dark", id: "nav-link" %>
+</div>
+<%# Organiser privledges %>
 <% if can? :create, Task %>
-  <br>
-  <%= link_to "Requests", my_requests_path, class: "nav-link text-dark", id: "nav-link" %>
-  <%= link_to "New Request", new_task_path, class: "nav-link text-dark", id: "nav-link" %>
+  <div class="d-flex flex-row align-items-center", id="nav-link">
+    <i class="fa fa-clipboard"></i>
+    <%= link_to "Requests", my_requests_path, class: "nav-link text-dark", id: "nav-link" %>
+  </div>
+  <div class="d-flex flex-row align-items-center", id="nav-link">
+    <i class="fa fa-plus"></i>
+    <%= link_to "New Request", new_task_path, class: "nav-link text-dark", id: "nav-link" %>
+  </div>
 <% end %>
+<%# Admin privledges %>
 <% if can? :manage, :all %>
-  <br>
-  <%= link_to "Admin Dashboard", "admin", class: "nav-link text-dark" %> 
+<div class="d-flex flex-row align-items-center", id="nav-link">
+  <i class="fa fa-tachometer"></i>
+  <%= link_to "Admin Dashboard", "admin", class: "nav-link text-dark", id: "nav-link" %> 
+</div>
 <% end %>
-  <br>
-<%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link text-dark", id: "nav-link" %>
+<div class="d-flex flex-row align-items-center", id="nav-link">
+  <i class="fa fa-sign-out"></i>
+  <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link text-dark", id: "nav-link" %>
+</div>

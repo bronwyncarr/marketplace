@@ -4,9 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :timeoutable
 
-  # # Allows users to create a task
-  has_many :tasks, dependent: :destroy
-
   has_many :organisers, dependent: :destroy
   has_many :charities, through: :organisers
 
