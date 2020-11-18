@@ -1,6 +1,7 @@
 <h1 class="text-center m-5">Expressions of Interest</h1>
 <h2 class="text-center">Upcoming</h1>
 <% if @new_interests.present? %>
+  <p>You've expressed interst in the following opportunities.!</p>
   <% @sorted_interest = @new_interests.sort_by { |n| n[:date]} %>
   <% @sorted_interest.each do |i| %>
     <%= render 'index_card', task: i.task %>

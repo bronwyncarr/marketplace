@@ -15,7 +15,7 @@ class Ability
       # Once approved they can manage the charity they are associated.
       # Everyone who is an organiser can manage the charity and posts of that charity
       can :manage, Task, charity_id: user.charities.ids
-      can %i[index show save], Task
+      can %i[index show save new create], Task
       can :manage, Charity, id: user.charities.ids
     else
       # General users can only see tasks and save them to their Interests list

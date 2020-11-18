@@ -6,6 +6,10 @@
   <i class="fa fa-hand-paper-o"></i>
   <%= link_to "Expressions of Interest", interests_path, class: "nav-link text-dark", id: "nav-link" %>
 </div>
+<div class="d-flex flex-row align-items-center", id="nav-link">
+  <i class="fa fa-heart"></i>
+  <%= link_to "Charities/Community groups", charities_path, class: "nav-link text-dark", id: "nav-link" %>
+</div>
 <%# Organiser privledges %>
 <% if can? :create, Task %>
   <div class="d-flex flex-row align-items-center", id="nav-link">
