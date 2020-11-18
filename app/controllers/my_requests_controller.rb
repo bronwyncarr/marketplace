@@ -1,7 +1,7 @@
 class MyRequestsController < ApplicationController
   before_action :set_task, only: :show
 
-  # Show tasks from all charities that the user is associated with EVEN if they didn't create them
+  # Show tasks from all charities that the user is associated with
   def index
     # Find all the charities the user is associated with through current_user.charities
     # This may returns multiple rows of charities

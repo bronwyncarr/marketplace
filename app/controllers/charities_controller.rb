@@ -11,6 +11,9 @@ class CharitiesController < ApplicationController
 
   def edit; end
 
+  # When creating a new charity, the current user will be saved in the orgasnisers table for that charity.
+  # They will not be able to post until they have been 'upgraded' by admin to role: organiser.
+  # Once admin approves them, any future charities they addd, they are able to post for and manage straight away.
   def create
     if @charity.save! && 
       @organiser = current_user.organisers.new(charity_id: @charity.id)
