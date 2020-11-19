@@ -10,8 +10,8 @@ class MyRequestsController < ApplicationController
     @new_tasks = []
     @old_tasks = []
     current_user.charities.each do |charity_found|
-      @new_tasks << Task.current.where(charity_id: charity_found.id).includes([:charity, image_attachment: :blob])
-      @old_tasks << Task.previous.where(charity_id: charity_found.id).includes([:charity, image_attachment: :blob])
+      @new_tasks << Task.current.where(charity_id: charity_found.id).includes(:charity, image_attachment: :blob )
+      @old_tasks << Task.previous.where(charity_id: charity_found.id).includes(:charity, image_attachment: :blob)
     end
   end
 
@@ -24,7 +24,7 @@ class MyRequestsController < ApplicationController
     # Can use .find as only one user will have that user_id
     @found_people = []
     @task.interests.each do |interest_found|
-      interested_users = User.find(interest_found.user_id)
+      interested_users = User.find(interest_found.user_id).includes(:charity)
       @found_people << interested_users 
     end
   end
