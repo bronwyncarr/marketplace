@@ -14,6 +14,8 @@ class User < ApplicationRecord
 
   before_save :assign_role
 
+  # Assigning roles can be admin, organiser or general.
+  # default is general.
   def assign_role
     self.role = Role.find_by name: 'general' if role.nil?
   end

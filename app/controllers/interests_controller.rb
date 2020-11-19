@@ -19,7 +19,7 @@ class InterestsController < ApplicationController
   end
 
   def set_interest
-    @interest = Interest.find(params[:id]).includes(:task => [{image_attachment: :blob}, :skills, :required_skills, :address, :charity], :charity => [image_attachment: :blob])
+    @interest = Interest.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.

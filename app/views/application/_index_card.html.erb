@@ -21,7 +21,12 @@
           <p class="card-text text-muted"><%= task.hours %> hours</p>
         </div>
         <%= link_to 'Tell me more!', task, class: "btn btn-outline-secondary" %>
+        <%#  %>
+        <% if defined?(i) %>
+         <%= link_to 'Delete', i, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn show-btn btn-secondary" %>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
+

@@ -4,7 +4,7 @@
   <p>You've expressed interst in the following opportunities.!</p>
   <% @sorted_interest = @new_interests.sort_by { |n| n[:date]} %>
   <% @sorted_interest.each do |i| %>
-    <%= render 'index_card', task: i.task %>
+    <%= render 'index_card', task: i.task, i: i %>
   <% end %>
 <% else %>
   <p>You have not signed up for any tasks yet. Let's add some!</p>
