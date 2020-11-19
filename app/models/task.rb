@@ -18,19 +18,19 @@ class Task < ApplicationRecord
   # Allows each task to have an address.
   has_one :address, dependent: :destroy
   accepts_nested_attributes_for :address
-  
+
   # Allows users to add an image
   has_one_attached :image
-  
+
   # Allows each task to have a charity.
   belongs_to :charity
   accepts_nested_attributes_for :charity
 
   # Scope to seperate upcoming and past dates
-  scope :current, -> { where("date >= ?", Date.current) }
-  scope :previous, -> { where("date < ?", Date.current) }
+  scope :current, -> { where('date >= ?', Date.current) }
+  scope :previous, -> { where('date < ?', Date.current) }
 
   # Scope for searching
-  scope :search_by_title, -> (title) { where('title ILIKE ?', "%#{title}%") }
-  scope :search_by_skills, -> (skill_ids) { joins(:skills).merge(Skill.where(id: skill_ids)) }
+  scope :search_by_title, ->(title) { where('title ILIKE ?', "%#{title}%") }
+  scope :search_by_skills, ->(skill_ids) { joins(:skills).merge(Skill.where(id: skill_ids)) }
 end
