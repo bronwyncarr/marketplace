@@ -75,8 +75,6 @@ To demonstrate the features I have seeded data and created 3 basic logins:
 | Role | Username | Password |
 | ------------------ | ----------------- | ----------|
 | General | a@test.com | 123456 |
-| Organiser | b@test.com | 123456 |
-| Admin | c@test.com | 123456 |
 
 ### :raising_hand: Target audience
 
