@@ -26,7 +26,7 @@ Many charities are completely reliant on volunteers and are facing unprecedented
 
 ## :clipboard: Details of the app including
 
-### Purpose
+### :bulb: Purpose
 
 The purpose of this app is to connect charities/community groups and volunteers. It will remove some of the barrier’s volunteers face, allow charities to raise awareness and support local connections. Charities can register requests for assistance for a specific task which volunteers register for on a one-of basis. Volunteers can become aware of what opportunities exist in their local area and see the date, time commitment and skills required. This will remove some of the barriers identified.
 
@@ -50,7 +50,7 @@ Benefits include:
 - Encourages a sense of fulfilment by assisting others
 - Enables more people to be involved in their community who might previously not been
 
-### Features
+### :sparkles: Features
 
 The app will allow charities to log in and post information on a one-off request for assistance such as building garden beds at a neighbourhood house or holding a second-hand book sale and volunteers can express interest in volunteering for these events.
 
@@ -78,7 +78,7 @@ To demonstrate the features I have seeded data and created 3 basic logins:
 | Organiser | b@test.com | 123456 |
 | Admin | c@test.com | 123456 |
 
-### Target audience
+### :raising_hand: Target audience
 
 This app is targeted people who wish to volunteer and charities or local community groups who require assistance. The app will appeal to those who already actively volunteer in their community but is also designed to break down some barriers to volunteering and encourage more people to become involved. This will include people who previously:
 
@@ -99,7 +99,7 @@ Target audience examples might include:
 - People who want to volunteer but at a time convenient to them without an ongoing commitment
 - People who want more information about what is required before having to commit
 
-### Techstack
+### :computer: Techstack
 
 Teck stack used for this project is:
 
@@ -127,12 +127,13 @@ Third party services including:
 - GoogleMaps API
 - Leaflet
 - Map Box
+- Rubocop-rails
 
-### Sitemap
+### :world_map: Sitemap
 
 ![Sitemap](./docs/sitemap.png)
 
-### Screenshots
+### :camera: Screenshots
 
 Home page:
 ![Home page](./docs/home.png)
@@ -178,4 +179,3 @@ Edit a request Part 1:
 
 Edit a request Part 2:
 ![Editing a request](./docs/edit2.png)
-- Rubocop-rails
