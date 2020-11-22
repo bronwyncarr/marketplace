@@ -2,7 +2,7 @@
 
 ## :information_source: About
 
-Community-connect is a two sided-marketplace app designed to bring people willing to volunteer their time together with local charities or community groups. It was developed in accordance with the requirements of Coder Academy T2A2 Marketplace Project.
+Community Connect is a two sided-marketplace app designed to bring people willing to volunteer their time together with local charities or community groups. It was developed in accordance with the requirements of Coder Academy T2A2 Marketplace Project.
 
 ## :link: R9 R10 Links for this app
 
