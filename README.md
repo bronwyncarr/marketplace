@@ -13,7 +13,7 @@ Heroku - <https://volunteer-marketplace.herokuapp.com/>
 
 ## :thinking: The need for volunteers
 
-Volunteers are relied upon to provide many services and functions critical to Australian society. Most notably, in Australia over 3 million people live below the poverty line and almost half of them regularly rely on food relief. However, almost everyone in Australia would draw benefit from the wide range of services charities and local community groups provide. These include services such as: keeping beaches safe, looking after elderly, fighting fires, running local facilities, accessing medical care and championing equality; in fact, there are over 50,000 Australian registered charities.
+Volunteers are relied upon to provide many services and functions critical to Australian society. These include services such as: keeping beaches safe, looking after elderly, fighting fires, running local facilities, accessing medical care and championing equality; in fact, there are over 50,000 Australian registered charities and almost all Australians would somehow draw benefit from them.
 
 A report by Volunteering Australia cited some of the common barriers people faced to volunteering were:
 
@@ -22,7 +22,7 @@ A report by Volunteering Australia cited some of the common barriers people face
 - No one asked – 45%
 - Did not know how to become involved – 22%
 
-Many charities are completely reliant on volunteers and are facing unprecedented demand for assistance. In addition to the social benefits, volunteer contribute billions of dollars to the Australian economy and in general, personally benefit from an increase to their physical and mental wellbeing.
+Many charities are completely reliant on volunteers and are currently facing an unprecedented demand for assistance. In addition to the social benefits, volunteer contribute billions of dollars to the Australian economy and in general, personally benefit from an increase to their physical and mental wellbeing.
 
 ## :clipboard: Details of the app including
 
