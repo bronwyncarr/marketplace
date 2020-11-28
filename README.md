@@ -134,7 +134,7 @@ Third party services including:
 ### :camera: Screenshots
 
 Home page:
-![Home page](./docs/home.png)
+![Home page](./docs/homepg.png)
 
 Sign in page:
 ![Sign in page](./docs/sign-in.png)
